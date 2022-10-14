@@ -25,7 +25,7 @@ public struct Declaration {
   /// Creates a CSS declaration with multiple values.
   /// - Parameters:
   ///   - property: The name of the CSS property.
-  ///   - value: The values in the declaration.
+  ///   - values: The values in the declaration.
   public init<V: Value>(property: String, values: [V]) {
     self.property = property
     self.value = values.render()
