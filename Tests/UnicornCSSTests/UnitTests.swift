@@ -3,17 +3,16 @@ import XCTest
 
 final class UnitTests: XCTestCase {
   func testPixelStringRepresentation() {
-    let sut = Unit.pixel(16)
-    XCTAssertEqual(sut.render(), "16px")
+    XCTAssertEqual(Unit.pixel(16).render(), "16px")
   }
 
   func testEmStringRepresentation() {
-    let sut = Unit.em(1.25)
-    XCTAssertEqual(sut.render(), "1.25em")
+    XCTAssertEqual(Unit.em(0.5).render(), "0.5em")
+    XCTAssertEqual(Unit.em(0.75).render(), "0.75em")
+    XCTAssertEqual(Unit.em(1.0).render(), "1.0em")
   }
 
   func testRemStringRepresentation() {
-    let sut = Unit.rem(1.25)
-    XCTAssertEqual(sut.render(), "1.25rem")
+    XCTAssertEqual(Unit.rem(1.25).render(), "1.25rem")
   }
 }
