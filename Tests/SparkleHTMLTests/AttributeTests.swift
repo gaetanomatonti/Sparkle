@@ -2,6 +2,14 @@ import XCTest
 @testable import SparkleHTML
 
 final class AttributeTests: XCTestCase {
+  func testValuelessAttribute() {
+    let sut = Script()
+    .defer()
+    .src("main.js")
+
+    XCTAssertEqual(sut.render(), "<script defer src=\"main.js\"></script>")
+  }
+
   func testComponentWithModifier() {
     let sut = Paragraph {
       Text("Hello World")

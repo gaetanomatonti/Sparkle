@@ -8,6 +8,11 @@ public struct Script: Component {
 
   // MARK: - Init
 
+  /// Creates an empty component.
+  public init() {
+    self.content = Text("")
+  }
+
   /// Creates the component with a `String` content.
   /// - Parameter content: The `String` to render inside the component.
   public init(_ content: String) {
