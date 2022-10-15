@@ -37,3 +37,20 @@ public final class Renderer {
       .joined(separator: "\n")
   }
 }
+
+// MARK: - Environment
+
+struct RendererKey: EnvironmentKey {
+  static var defaultValue = Renderer()
+}
+
+extension EnvironmentValues {
+  public static var styleSheetRenderer: Renderer {
+    get {
+      self[RendererKey.self]
+    }
+    set {
+      self[RendererKey.self] = newValue
+    }
+  }
+}
