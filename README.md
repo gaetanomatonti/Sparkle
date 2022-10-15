@@ -21,7 +21,7 @@ dependencies: [
 
 Create an executable target that depends on Sparkle.
 
-```
+```swift
 targets: [
   .executableTarget(
     name: "MyWebsite",
