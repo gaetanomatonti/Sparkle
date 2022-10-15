@@ -8,6 +8,8 @@ public struct Div: Component {
 
   // MARK: - Init
 
+  /// Creates the component and its content from the builder closure.
+  /// - Parameter content: The closure that constructs the content.
   public init(@ComponentBuilder content: () -> Component) {
     self.content = content()
   }

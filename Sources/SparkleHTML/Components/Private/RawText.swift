@@ -8,6 +8,8 @@ struct RawText: Component {
 
   // MARK: - Init
 
+  /// Creates the component with a `String` content.
+  /// - Parameter content: The raw `String` content to render.
   init(_ content: String) {
     self.content = content
   }
@@ -15,7 +17,7 @@ struct RawText: Component {
   // MARK: - Body
 
   var body: Component {
-    fatalError()
+    fatalError("This body should not be accessed.")
   }
 
   // MARK: - Functions

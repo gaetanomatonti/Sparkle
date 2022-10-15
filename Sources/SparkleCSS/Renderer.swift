@@ -40,11 +40,13 @@ public final class Renderer {
 
 // MARK: - Environment
 
+/// The key to access the `Renderer` instance in the environment.
 struct RendererKey: EnvironmentKey {
   static var defaultValue = Renderer()
 }
 
 extension EnvironmentValues {
+  /// The instance of the `Renderer` in the environment.
   public static var styleSheetRenderer: Renderer {
     get {
       self[RendererKey.self]
