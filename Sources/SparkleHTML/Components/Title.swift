@@ -10,7 +10,7 @@ public struct Title: Component {
 
   /// Creates the component and its content from the builder closure.
   /// - Parameter content: The closure that constructs the content.
-  public init(_ content: () -> Text) {
+  init(_ content: () -> RawText) {
     self.content = content()
   }
 
@@ -18,7 +18,7 @@ public struct Title: Component {
   /// - Parameter content: The `String` to render inside the component.
   public init(_ content: String) {
     self.init {
-      Text(content)
+      RawText(content)
     }
   }
 
@@ -26,7 +26,7 @@ public struct Title: Component {
   /// - Parameter content: The closure that constructs the content.
   public init(_ content: () -> String) {
     self.init {
-      Text(content())
+      RawText(content())
     }
   }
 

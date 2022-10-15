@@ -23,7 +23,7 @@ extension Attribute {
 
   /// Creates a `height` attribute.
   /// - Parameter height: The height of the element
-  /// - Returns: The created `width` attribute.
+  /// - Returns: The created `height` attribute.
   public static func height(_ height: String) -> Attribute {
     Attribute("height", value: height)
   }

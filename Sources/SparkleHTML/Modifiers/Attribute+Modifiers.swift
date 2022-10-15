@@ -3,11 +3,8 @@
 /// - Returns: The component updated with the specified attribute.
 extension Component {
   public func attribute(_ attribute: Attribute) -> Component {
-    if let body = body as? RawText {
-      return Span {
-        body
-      }
-      .attribute(attribute)
+    if let component = self as? AttributedComponent {
+      return component.appending(attribute)
     }
 
     if let body = body as? Element {

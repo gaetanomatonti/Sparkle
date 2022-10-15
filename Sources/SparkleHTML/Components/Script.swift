@@ -1,7 +1,9 @@
 /// A component that renders a `<script>` element.
-public struct Script: Component {
+public struct Script: AttributedComponent {
 
   // MARK: - Stored Properties
+
+  var attributes: Set<Attribute>
 
   /// The content of the component.
   let content: Component
@@ -9,28 +11,22 @@ public struct Script: Component {
   // MARK: - Init
 
   /// Creates an empty component.
-  public init() {
-    self.content = Text("")
-  }
-
-  /// Creates the component with a `String` content.
-  /// - Parameter content: The `String` to render inside the component.
-  public init(_ content: String) {
-    self.init {
-      content
-    }
+  public init(_ attributes: Attribute...) {
+    self.attributes = Set(attributes)
+    self.content = RawText("")
   }
 
   /// Creates the component and its content from the builder closure.
   /// - Parameter content: The closure that constructs the content.
-  public init(_ content: () -> String) {
-    self.content = Text(content())
+  public init(_ attributes: Attribute..., content: () -> String) {
+    self.attributes = Set(attributes)
+    self.content = RawText(content())
   }
 
   // MARK: - Body
 
   public var body: Component {
-    Element(name: "script") {
+    Element(name: "script", attributes: attributes) {
       content
     }
   }

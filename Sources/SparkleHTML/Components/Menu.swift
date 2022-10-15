@@ -1,8 +1,10 @@
 /// A component that renders a `<menu>` container element.
-public struct Menu: Component {
+public struct Menu: AttributedComponent {
 
   // MARK: - Stored Properties
 
+  var attributes: Set<Attribute>
+  
   /// The content of the component.
   let content: Component
 
@@ -21,18 +23,24 @@ public struct Menu: Component {
     }
 
     self.content = Group(components: components)
+    self.attributes = []
   }
 
-  /// Creates the component and its content from the builder closure – does not wrap the elements in a `<li>` element.
-  /// - Parameter content: The closure that constructs the content.
-  public init(@ComponentBuilder content: () -> Component) {
+  // MARK: - Init
+
+  /// Creates the component and its content from the builder closure.
+  /// - Parameters:
+  ///   - attributes: The attributes to add to the underlying element.
+  ///   - content: The closure that constructs the content.
+  public init(_ attributes: Attribute..., @ComponentBuilder content: () -> Component) {
+    self.attributes = Set(attributes)
     self.content = content()
   }
 
   // MARK: - Body
 
   public var body: Component {
-    Element(name: "menu") {
+    Element(name: "menu", attributes: attributes) {
       content
     }
   }

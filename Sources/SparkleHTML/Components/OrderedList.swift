@@ -1,7 +1,9 @@
 /// A component that renders a `<ol>` container element.
-public struct OrderedList: Component {
+public struct OrderedList: AttributedComponent {
 
   // MARK: - Stored Properties
+
+  var attributes: Set<Attribute>
 
   /// The content of the component.
   let content: Component
@@ -21,18 +23,24 @@ public struct OrderedList: Component {
     }
 
     self.content = Group(components: components)
+    self.attributes = []
   }
 
-  /// Creates the component and its content from the builder closure – does not wrap the elements in a `<li>` element.
-  /// - Parameter content: The closure that constructs the content.
-  public init(@ComponentBuilder content: () -> Component) {
+  // MARK: - Init
+
+  /// Creates the component and its content from the builder closure.
+  /// - Parameters:
+  ///   - attributes: The attributes to add to the underlying element.
+  ///   - content: The closure that constructs the content.
+  public init(_ attributes: Attribute..., @ComponentBuilder content: () -> Component) {
+    self.attributes = Set(attributes)
     self.content = content()
   }
 
   // MARK: - Body
 
   public var body: Component {
-    Element(name: "ol") {
+    Element(name: "ol", attributes: attributes) {
       content
     }
   }

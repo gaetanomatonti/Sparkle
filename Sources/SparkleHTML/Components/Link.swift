@@ -1,17 +1,16 @@
 /// A component that renders a `<link>` element.
-public struct Link: Component {
+public struct Link: AttributedComponent {
 
   // MARK: - Stored Properties
 
-  /// The attributes of the element.
-  let attributes: [Attribute]
+  var attributes: Set<Attribute>
 
   // MARK: - Init
 
   /// Creates the component by adding attributes to the underlying elements.
   /// - Parameter attributes: The attributes to add to the underlying element.
   public init(_ attributes: Attribute...) {
-    self.attributes = attributes
+    self.attributes = Set(attributes)
   }
 
   // MARK: - Body

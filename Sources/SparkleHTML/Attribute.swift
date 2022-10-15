@@ -13,6 +13,8 @@ public struct Attribute {
 
   // MARK: - Init
 
+  /// Creates a valueless HTML attribute.
+  /// - Parameter name: The name of the attribute.
   init(_ name: String) {
     self.name = name
     self.values = []
