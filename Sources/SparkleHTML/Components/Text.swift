@@ -1,4 +1,5 @@
 /// A component that renders raw text.
+/// Applying attributes and style modifiers to this component automatically wraps its content into a `<span>` element.
 public struct Text: Component {
 
   // MARK: - Stored Properties

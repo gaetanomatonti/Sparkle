@@ -99,60 +99,6 @@ final class RenderTests: XCTestCase {
     XCTAssertEqual(sut.render(), "<script>console.log('hello world')</script>")
   }
 
-  func testHeadingOne() {
-    let sut = Heading(level: .one) {
-      Text("Hello World")
-    }
-
-    XCTAssertEqual(sut.render(), "<h1>Hello World</h1>")
-  }
-
-  func testHeadingTwo() {
-    let sut = Heading(level: .two) {
-      Text("Hello World")
-    }
-
-    XCTAssertEqual(sut.render(), "<h2>Hello World</h2>")
-  }
-
-  func testHeadingThree() {
-    let sut = Heading(level: .three) {
-      Text("Hello World")
-    }
-
-    XCTAssertEqual(sut.render(), "<h3>Hello World</h3>")
-  }
-
-  func testHeadingFour() {
-    let sut = Heading(level: .four) {
-      Text("Hello World")
-    }
-
-    XCTAssertEqual(sut.render(), "<h4>Hello World</h4>")
-  }
-
-  func testHeadingFive() {
-    let sut = Heading(level: .five) {
-      Text("Hello World")
-    }
-
-    XCTAssertEqual(sut.render(), "<h5>Hello World</h5>")
-  }
-
-  func testHeadingSix() {
-    let sut = Heading(level: .six) {
-      Text("Hello World")
-    }
-
-    XCTAssertEqual(sut.render(), "<h6>Hello World</h6>")
-  }
-
-  func testParagraph() {
-    let sut = Paragraph("Hello World")
-    
-    XCTAssertEqual(sut.render(), "<p>Hello World</p>")
-  }
-
   func testDiv() {
     let sut = Div {
 
@@ -215,6 +161,144 @@ final class RenderTests: XCTestCase {
     }
 
     XCTAssertEqual(sut.render(), "<main></main>")
+  }
+
+  func testBlockquote() {
+    let sut = Blockquote {
+
+    }
+
+    XCTAssertEqual(sut.render(), "<blockquote></blockquote>")
+  }
+
+  func testListItem() {
+    let sut = ListItem {
+
+    }
+
+    XCTAssertEqual(sut.render(), "<li></li>")
+  }
+
+  func testList() {
+    let items = ["Hello", "World"]
+    let sut = List(items) { item in
+      Text(item)
+    }
+
+    XCTAssertEqual(sut.render(), "<ul><li>Hello</li><li>World</li></ul>")
+  }
+
+  func testOrderedList() {
+    let items = ["Hello", "World"]
+    let sut = OrderedList(items) { item in
+      Text(item)
+    }
+
+    XCTAssertEqual(sut.render(), "<ol><li>Hello</li><li>World</li></ol>")
+  }
+
+  func testMenu() {
+    let items = ["Hello", "World"]
+    let sut = Menu(items) { item in
+      Text(item)
+    }
+
+    XCTAssertEqual(sut.render(), "<menu><li>Hello</li><li>World</li></menu>")
+  }
+
+  func testHeadingOne() {
+    let sut = Heading(level: .one) {
+      Text("Hello World")
+    }
+
+    XCTAssertEqual(sut.render(), "<h1>Hello World</h1>")
+  }
+
+  func testHeadingTwo() {
+    let sut = Heading(level: .two) {
+      Text("Hello World")
+    }
+
+    XCTAssertEqual(sut.render(), "<h2>Hello World</h2>")
+  }
+
+  func testHeadingThree() {
+    let sut = Heading(level: .three) {
+      Text("Hello World")
+    }
+
+    XCTAssertEqual(sut.render(), "<h3>Hello World</h3>")
+  }
+
+  func testHeadingFour() {
+    let sut = Heading(level: .four) {
+      Text("Hello World")
+    }
+
+    XCTAssertEqual(sut.render(), "<h4>Hello World</h4>")
+  }
+
+  func testHeadingFive() {
+    let sut = Heading(level: .five) {
+      Text("Hello World")
+    }
+
+    XCTAssertEqual(sut.render(), "<h5>Hello World</h5>")
+  }
+
+  func testHeadingSix() {
+    let sut = Heading(level: .six) {
+      Text("Hello World")
+    }
+
+    XCTAssertEqual(sut.render(), "<h6>Hello World</h6>")
+  }
+
+  func testParagraph() {
+    let sut = Paragraph("Hello World")
+
+    XCTAssertEqual(sut.render(), "<p>Hello World</p>")
+  }
+
+  func testAnchor() {
+    let sut = Anchor {
+
+    }
+
+    XCTAssertEqual(sut.render(), "<a></a>")
+  }
+
+  func testSpan() {
+    let sut = Span {
+      Text("Hello World")
+    }
+
+    XCTAssertEqual(sut.render(), "<span>Hello World</span>")
+  }
+
+  func testAutomaticSpanWrapping() {
+    let sut = Paragraph {
+      Text("Hello ")
+
+      Text("World")
+        .class("text-red")
+    }
+
+    XCTAssertEqual(sut.render(), "<p>Hello <span class=\"text-red\">World</span></p>")
+  }
+
+  func testImage() {
+    let sut = Image()
+
+    XCTAssertEqual(sut.render(), "<img>")
+  }
+
+  func testVideo() {
+    let sut = Video {
+
+    }
+
+    XCTAssertEqual(sut.render(), "<video></video>")
   }
 
   // MARK: - Attribute Tests
