@@ -95,8 +95,7 @@ final class RenderTests: XCTestCase {
       }
       .class("text-bold")
     }
-    .class("container")
-    .class("bg-black")
+    .class("container", "bg-black")
 
     XCTAssertEqual(sut.render(), "<div class=\"bg-black container\"><p class=\"text-bold\">Hello World</p></div>")
   }

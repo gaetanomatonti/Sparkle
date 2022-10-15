@@ -15,8 +15,18 @@ extension Component {
   ///   - name: The name of the attribute to add to the element.
   ///   - value: The value of the attribute to add to the element.
   /// - Returns: The component updated with the specified attribute.
-  private func attribute(_ name: String, value: String) -> Component {
+  public func attribute(_ name: String, value: String) -> Component {
     let attribute = Attribute(name, value: value)
+    return self.attribute(attribute)
+  }
+
+  /// Creates and adds an attribute to the underlying element.
+  /// - Parameters:
+  ///   - name: The name of the attribute to add to the element.
+  ///   - values: The list of values of the attribute to add to the element.
+  /// - Returns: The component updated with the specified attribute.
+  public func attribute(_ name: String, values: [String]) -> Component {
+    let attribute = Attribute(name, values: values)
     return self.attribute(attribute)
   }
 }
@@ -25,8 +35,8 @@ extension Component {
   /// Adds a `class` attribute to the component.
   /// - Parameter name: The name of the class to add.
   /// - Returns: The component updated with the `class` attribute.
-  public func `class`(_ name: String) -> Component {
-    attribute("class", value: name)
+  public func `class`(_ names: String...) -> Component {
+    attribute("class", values: names)
   }
 
   /// Adds a `href` attribute to the component.

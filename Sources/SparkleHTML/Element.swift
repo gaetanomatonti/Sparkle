@@ -16,7 +16,6 @@ public struct Element {
     case selfClosing
   }
 
-
   // MARK: - Stored Properties
 
   /// The name of the element, reflected in the opening and closing tags, if any.
@@ -95,7 +94,7 @@ public struct Element {
     self.closingMode = .standard
   }
 
-  // MARK. - Functions
+  // MARK: - Functions
 
   /// Inserts a new attribute to the element. If an attribute with the same name already exists, the value of the specified attribute will be appended.
   /// - Parameter attribute: The attribute to add to the element.
