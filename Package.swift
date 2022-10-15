@@ -10,6 +10,10 @@ let package = Package(
   ],
   products: [
     .library(
+      name: "Sparkle",
+      targets: ["Sparkle"]
+    ),
+    .library(
       name: "SparkleCSS",
       targets: ["SparkleCSS"]
     ),
@@ -34,6 +38,14 @@ let package = Package(
     .target(
       name: "SparkleHTML",
       dependencies: ["SparkleCSS", "SparkleTools"]
+    ),
+    .target(
+      name: "Sparkle",
+      dependencies: ["SparkleCSS", "SparkleHTML", "SparkleTools"]
+    ),
+    .testTarget(
+      name: "SparkleTests",
+      dependencies: ["Sparkle"]
     ),
     .testTarget(
       name: "SparkleCSSTests",
