@@ -1,4 +1,4 @@
-import UnicornTools
+import SparkleTools
 
 extension Rule {
   /// Creates a rule that sets the margins of a component.

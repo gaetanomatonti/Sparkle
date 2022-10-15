@@ -1,4 +1,4 @@
-import UnicornTools
+import SparkleTools
 
 /// A type representing a rule declaration.
 public struct Declaration {

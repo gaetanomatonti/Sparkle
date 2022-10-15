@@ -1,4 +1,4 @@
-import UnicornTools
+import SparkleTools
 
 /// A type representing a CSS rule applied as a class.
 public struct Rule {

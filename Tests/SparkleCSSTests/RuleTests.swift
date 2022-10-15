@@ -1,5 +1,5 @@
 import XCTest
-@testable import UnicornCSS
+@testable import SparkleCSS
 
 final class RuleTests: XCTestCase {
   func testMarginRule() {

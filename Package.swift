@@ -4,32 +4,32 @@
 import PackageDescription
 
 let package = Package(
-  name: "Unicorn",
+  name: "Sparkle",
   platforms: [
     .macOS(.v12)
   ],
   products: [
     .library(
-      name: "UnicornCSS",
-      targets: ["UnicornCSS"]
+      name: "SparkleCSS",
+      targets: ["SparkleCSS"]
     ),
     .library(
-      name: "UnicornTools",
-      targets: ["UnicornTools"]
+      name: "SparkleTools",
+      targets: ["SparkleTools"]
     )
   ],
   targets: [
     .target(
-      name: "UnicornTools",
+      name: "SparkleTools",
       dependencies: []
     ),
     .target(
-      name: "UnicornCSS",
-      dependencies: ["UnicornTools"]
+      name: "SparkleCSS",
+      dependencies: ["SparkleTools"]
     ),
     .testTarget(
-      name: "UnicornCSSTests",
-      dependencies: ["UnicornCSS"]
+      name: "SparkleCSSTests",
+      dependencies: ["SparkleCSS"]
     )
   ]
 )
