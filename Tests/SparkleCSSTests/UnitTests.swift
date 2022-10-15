@@ -1,5 +1,5 @@
 import XCTest
-@testable import UnicornCSS
+@testable import SparkleCSS
 
 final class UnitTests: XCTestCase {
   func testPixelStringRepresentation() {

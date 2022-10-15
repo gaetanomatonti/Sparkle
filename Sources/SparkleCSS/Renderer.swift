@@ -1,5 +1,5 @@
 import Foundation
-import UnicornTools
+import SparkleTools
 
 /// An object that renders a set of CSS rules into a file.
 public final class Renderer {

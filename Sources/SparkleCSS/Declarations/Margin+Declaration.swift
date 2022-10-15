@@ -1,4 +1,4 @@
-import UnicornTools
+import SparkleTools
 
 public extension Declaration {
   /// Creates a declaration to set the margins of a component.
