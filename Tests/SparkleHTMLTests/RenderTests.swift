@@ -52,18 +52,10 @@ final class RenderTests: XCTestCase {
       ]
     )
 
-    XCTAssertEqual(sut.render(), "<meta charset=\"UTF-8\"/>")
+    XCTAssertEqual(sut.render(), "<meta charset=\"UTF-8\">")
   }
 
   // MARK: - Component Tests
-
-  func testEmptyComponent() {
-    let sut = Head {
-
-    }
-
-    XCTAssertEqual(sut.render(), "<head></head>")
-  }
 
   func testText() {
     let sut = Text("Hello World")
@@ -71,7 +63,43 @@ final class RenderTests: XCTestCase {
     XCTAssertEqual(sut.render(), "Hello World")
   }
 
-  func testComponent() {
+  func testHead() {
+    let sut = Head {
+
+    }
+
+    XCTAssertEqual(sut.render(), "<head></head>")
+  }
+
+  func testTitle() {
+    let sut = Title {
+      "MyWebsite"
+    }
+
+    XCTAssertEqual(sut.render(), "<title>MyWebsite</title>")
+  }
+
+  func testLink() {
+    let sut = Link()
+
+    XCTAssertEqual(sut.render(), "<link>")
+  }
+
+  func testMeta() {
+    let sut = Meta()
+
+    XCTAssertEqual(sut.render(), "<meta>")
+  }
+
+  func testScript() {
+    let sut = Script {
+      "console.log('hello world')"
+    }
+
+    XCTAssertEqual(sut.render(), "<script>console.log('hello world')</script>")
+  }
+
+  func testParagraph() {
     let sut = Paragraph("Hello World")
     
     XCTAssertEqual(sut.render(), "<p>Hello World</p>")

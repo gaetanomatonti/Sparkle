@@ -1,5 +1,5 @@
-/// A component that renders a `<link>` element.
-public struct Link: Component {
+/// A component that renders a `<meta>` element.
+public struct Meta: Component {
 
   // MARK: - Stored Properties
 
@@ -17,6 +17,6 @@ public struct Link: Component {
   // MARK: - Body
 
   public var body: Component {
-    Element(name: "link", attributes: attributes)
+    Element(name: "meta", attributes: attributes)
   }
 }

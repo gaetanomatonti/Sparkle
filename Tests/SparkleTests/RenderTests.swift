@@ -8,7 +8,7 @@ final class RenderTests: XCTestCase {
       sut.render(),
       """
       <!DOCTYPE html>
-      <html><head><link href=\"styles.css\" rel=\"stylesheet\"/></head><body><p>Hello World</p></body></html>
+      <html><head><link href=\"styles.css\" rel=\"stylesheet\"></head><body><p>Hello World</p></body></html>
       """
     )
   }

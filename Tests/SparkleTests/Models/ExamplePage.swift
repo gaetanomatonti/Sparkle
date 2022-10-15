@@ -5,7 +5,7 @@ struct ExamplePage: Page {
     Head {
       Link()
         .href("styles.css")
-        .rel("stylesheet")
+        .rel(.stylesheet)
     }
   }
 

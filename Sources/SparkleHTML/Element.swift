@@ -42,13 +42,7 @@ public struct Element {
       tag += attributes.sorted(by: { $0.name < $1.name }).render()
     }
 
-    switch closingMode {
-      case .standard:
-        tag += ">"
-
-      case .selfClosing:
-        tag += "/>"
-    }
+    tag += ">"
 
     return tag
   }
