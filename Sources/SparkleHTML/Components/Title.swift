@@ -8,22 +8,26 @@ public struct Title: Component {
 
   // MARK: - Init
 
-  /// Creates the component with a `String` content.
-  /// - Parameter content: The `String` to render inside the component.
-  public init(_ content: String) {
-    self.content = Text(content)
-  }
-
   /// Creates the component and its content from the builder closure.
   /// - Parameter content: The closure that constructs the content.
   public init(_ content: () -> Text) {
     self.content = content()
   }
 
+  /// Creates the component with a `String` content.
+  /// - Parameter content: The `String` to render inside the component.
+  public init(_ content: String) {
+    self.init {
+      Text(content)
+    }
+  }
+
   /// Creates the component and its content from the builder closure.
   /// - Parameter content: The closure that constructs the content.
   public init(_ content: () -> String) {
-    self.content = Text(content())
+    self.init {
+      Text(content())
+    }
   }
 
   // MARK: - Body

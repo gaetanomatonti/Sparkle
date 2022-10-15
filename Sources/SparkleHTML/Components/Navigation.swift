@@ -1,5 +1,5 @@
-/// A component that renders a `<p>` element.
-public struct Paragraph: Component {
+/// A component that renders a `<nav>` element.
+public struct Navigation: Component {
 
   // MARK: - Stored Properties
 
@@ -7,14 +7,6 @@ public struct Paragraph: Component {
   let content: Component
 
   // MARK: - Init
-
-  /// Creates the component with a `String` content.
-  /// - Parameter content: The `String` to render inside the component.
-  public init(_ content: String) {
-    self.init {
-      Text(content)
-    }
-  }
 
   /// Creates the component and its content from the builder closure.
   /// - Parameter content: The closure that constructs the content.
@@ -25,7 +17,7 @@ public struct Paragraph: Component {
   // MARK: - Body
 
   public var body: Component {
-    Element(name: "p") {
+    Element(name: "nav") {
       content
     }
   }

@@ -11,7 +11,9 @@ public struct Script: Component {
   /// Creates the component with a `String` content.
   /// - Parameter content: The `String` to render inside the component.
   public init(_ content: String) {
-    self.content = Text(content)
+    self.init {
+      content
+    }
   }
 
   /// Creates the component and its content from the builder closure.

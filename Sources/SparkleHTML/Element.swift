@@ -3,7 +3,7 @@ import SparkleTools
 /// A type representing an HTML element.
 public struct Element {
 
-  // MARK: - Data Structures
+  // MARK: - Structured Data
 
   /// The possible closing modes of an HTML element.
   enum ClosingMode {

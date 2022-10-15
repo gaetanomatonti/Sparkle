@@ -99,10 +99,122 @@ final class RenderTests: XCTestCase {
     XCTAssertEqual(sut.render(), "<script>console.log('hello world')</script>")
   }
 
+  func testHeadingOne() {
+    let sut = Heading(level: .one) {
+      Text("Hello World")
+    }
+
+    XCTAssertEqual(sut.render(), "<h1>Hello World</h1>")
+  }
+
+  func testHeadingTwo() {
+    let sut = Heading(level: .two) {
+      Text("Hello World")
+    }
+
+    XCTAssertEqual(sut.render(), "<h2>Hello World</h2>")
+  }
+
+  func testHeadingThree() {
+    let sut = Heading(level: .three) {
+      Text("Hello World")
+    }
+
+    XCTAssertEqual(sut.render(), "<h3>Hello World</h3>")
+  }
+
+  func testHeadingFour() {
+    let sut = Heading(level: .four) {
+      Text("Hello World")
+    }
+
+    XCTAssertEqual(sut.render(), "<h4>Hello World</h4>")
+  }
+
+  func testHeadingFive() {
+    let sut = Heading(level: .five) {
+      Text("Hello World")
+    }
+
+    XCTAssertEqual(sut.render(), "<h5>Hello World</h5>")
+  }
+
+  func testHeadingSix() {
+    let sut = Heading(level: .six) {
+      Text("Hello World")
+    }
+
+    XCTAssertEqual(sut.render(), "<h6>Hello World</h6>")
+  }
+
   func testParagraph() {
     let sut = Paragraph("Hello World")
     
     XCTAssertEqual(sut.render(), "<p>Hello World</p>")
+  }
+
+  func testDiv() {
+    let sut = Div {
+
+    }
+
+    XCTAssertEqual(sut.render(), "<div></div>")
+  }
+
+  func testArticle() {
+    let sut = Article {
+
+    }
+
+    XCTAssertEqual(sut.render(), "<article></article>")
+  }
+
+  func testHeader() {
+    let sut = Header {
+
+    }
+
+    XCTAssertEqual(sut.render(), "<header></header>")
+  }
+
+  func testFooter() {
+    let sut = Footer {
+
+    }
+
+    XCTAssertEqual(sut.render(), "<footer></footer>")
+  }
+
+  func testNavigation() {
+    let sut = Navigation {
+
+    }
+
+    XCTAssertEqual(sut.render(), "<nav></nav>")
+  }
+
+  func testSection() {
+    let sut = Section {
+
+    }
+
+    XCTAssertEqual(sut.render(), "<section></section>")
+  }
+
+  func testAside() {
+    let sut = Aside {
+
+    }
+
+    XCTAssertEqual(sut.render(), "<aside></aside>")
+  }
+
+  func testMain() {
+    let sut = Main {
+
+    }
+
+    XCTAssertEqual(sut.render(), "<main></main>")
   }
 
   // MARK: - Attribute Tests
