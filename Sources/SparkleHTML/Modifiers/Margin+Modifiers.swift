@@ -1,17 +1,4 @@
 import SparkleCSS
-import SparkleTools
-
-extension Component {
-  /// Applies the specified CSS rule to the HTML component and registers the rule for rendering.
-  /// - Parameter rule: The rule to apply to the component.
-  /// - Returns: The updated comopnent.
-  public func rule(_ rule: Rule) -> Component {
-    EnvironmentValues.styleSheetRenderer.insert(rule)
-    return self.class(rule.name)
-  }
-}
-
-// MARK: - Style Modifiers
 
 extension Component {
   /// Applies a margin to the component.

@@ -11,19 +11,7 @@ let package = Package(
   products: [
     .library(
       name: "Sparkle",
-      targets: ["Sparkle"]
-    ),
-    .library(
-      name: "SparkleCSS",
-      targets: ["SparkleCSS"]
-    ),
-    .library(
-      name: "SparkleHTML",
-      targets: ["SparkleHTML"]
-    ),
-    .library(
-      name: "SparkleTools",
-      targets: ["SparkleTools"]
+      targets: ["Sparkle", "SparkleCSS", "SparkleHTML", "SparkleTools"]
     )
   ],
   targets: [

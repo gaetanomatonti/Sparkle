@@ -29,7 +29,7 @@ public final class Renderer {
   public func render() -> String {
     rules
       .sorted { lhs, rhs in
-        lhs.name < rhs.name
+        lhs.selector.render() < rhs.selector.render()
       }
       .map { rule in
         rule.render()

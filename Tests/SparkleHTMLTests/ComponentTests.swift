@@ -241,4 +241,15 @@ final class ComponentTests: XCTestCase {
 
     XCTAssertEqual(sut.render(), "<video></video>")
   }
+
+  // MARK: Helpers
+
+  func testHStack() {
+    let sut = HStack {
+
+    }
+    .class("margin-0")
+
+    XCTAssertEqual(sut.render(), "<div class=\"content-normal flex-row gap-0px items-stretch justify-flex-start margin-0\"></div>")
+  }
 }

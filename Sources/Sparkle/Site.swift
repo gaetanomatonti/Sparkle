@@ -33,6 +33,12 @@ public extension Site {
 }
 
 extension Site {
+  /// Configures the CSS renderer.
+  /// - Parameter configure: A closure that allows to configure the main `Renderer` instance.
+  public func configureRenderer(_ configure: (Renderer) -> Void) {
+    configure(EnvironmentValues.styleSheetRenderer)
+  }
+
   /// Generates the site at the default `Output` directory of the package.
   public func generate(_ file: StaticString = #file) throws {
     let filePath = URL(fileURLWithPath: file.description)
