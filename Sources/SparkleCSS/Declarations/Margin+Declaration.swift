@@ -17,9 +17,9 @@ public extension Declaration {
 
   /// Creates a declaration to set the margins of a component.
   /// - Parameters:
-  ///   - top: The value of the top margins.
+  ///   - top: The value of the top margin.
   ///   - horizontal: The value of the horizontal margins.
-  ///   - bottom: The value of the bottom margins.
+  ///   - bottom: The value of the bottom margin.
   /// - Returns: The declaration that sets the margins.
   static func margin(top: Unit, horizontal: Unit, bottom: Unit) -> Declaration {
     Declaration(property: "margin", values: [top, horizontal, bottom])
@@ -27,10 +27,10 @@ public extension Declaration {
 
   /// Creates a declaration to set the margins of a component.
   /// - Parameters:
-  ///   - top: The value of the top margins.
-  ///   - right: The value of the right margins.
-  ///   - bottom: The value of the bottom margins.
-  ///   - left: The value of the left margins.
+  ///   - top: The value of the top margin.
+  ///   - right: The value of the right margin.
+  ///   - bottom: The value of the bottom margin.
+  ///   - left: The value of the left margin.
   /// - Returns: The declaration that sets the margins.
   static func margin(top: Unit, right: Unit, bottom: Unit, left: Unit) -> Declaration {
     Declaration(property: "margin", values: [top, right, bottom, left])

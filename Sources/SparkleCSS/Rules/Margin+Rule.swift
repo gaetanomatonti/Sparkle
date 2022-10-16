@@ -3,7 +3,7 @@ extension Rule {
   /// - Parameter value: The value of the margin on all edges.
   /// - Returns: The rule for a class that sets the margins.
   public static func margin(_ value: Unit) -> Rule {
-    Rule("margin-\(value.render())", declaration: .margin(value))
+    Rule("margin-\(value.render())", declarations: .margin(value))
   }
 
   /// Creates a rule that sets the margins of a component.
@@ -14,7 +14,7 @@ extension Rule {
   public static func margin(vertical: Unit, horizontal: Unit) -> Rule {
     Rule(
       "margin-v-\(vertical.render())-h-\(horizontal.render())",
-      declaration: .margin(vertical: vertical, horizontal: horizontal)
+      declarations: .margin(vertical: vertical, horizontal: horizontal)
     )
   }
 
@@ -27,7 +27,7 @@ extension Rule {
   public static func margin(top: Unit, horizontal: Unit, bottom: Unit) -> Rule {
     Rule(
       "margin-t-\(top.render())-h-\(horizontal)-b-\(bottom)",
-      declaration: .margin(top: top, horizontal: horizontal, bottom: bottom)
+      declarations: .margin(top: top, horizontal: horizontal, bottom: bottom)
     )
   }
 
@@ -41,7 +41,7 @@ extension Rule {
   public static func margin(top: Unit, right: Unit, bottom: Unit, left: Unit) -> Rule {
     Rule(
       "margin-t-\(top.render())-r-\(right.render())-b-\(bottom.render())-l-\(left)",
-      declaration: .margin(top: top, right: right, bottom: bottom, left: left)
+      declarations: .margin(top: top, right: right, bottom: bottom, left: left)
     )
   }
 
@@ -53,7 +53,7 @@ extension Rule {
   public static func margin(_ edge: Edge, _ value: Unit) -> Rule {
     Rule(
       "margin-\(edge.rawValue)-\(value.render())",
-      declaration: .margin(edge, value)
+      declarations: .margin(edge, value)
     )
   }
 }

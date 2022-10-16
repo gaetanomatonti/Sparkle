@@ -2,6 +2,9 @@ import Foundation
 
 /// A unit of measurement.
 public enum Unit {
+  /// Zero value.
+  case zero
+
   /// Automatically calculate the margin.
   case auto
 
@@ -18,6 +21,9 @@ public enum Unit {
 extension Unit: Value {
   public func render() -> String {
     switch self {
+      case .zero:
+        return "0"
+        
       case .auto:
         return "auto"
         

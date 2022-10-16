@@ -16,17 +16,8 @@ public struct Rule {
   /// Creates a new rule by specifying the name of the CSS class and a declaration.
   /// - Parameters:
   ///   - name: The name of the CSS class.
-  ///   - declaration: The CSS declaration that sets a style.
-  public init(_ name: String, declaration: Declaration) {
-    self.name = name
-    self.content = [declaration]
-  }
-
-  /// Creates a new rule by specifying the name of the CSS class and a declaration.
-  /// - Parameters:
-  ///   - name: The name of the CSS class.
-  ///   - declaration: The list of CSS declarations that set styles.
-  public init(_ name: String, declarations: [Declaration]) {
+  ///   - declaration: The list of CSS declarations that set a styles.
+  public init(_ name: String, declarations: Declaration...) {
     self.name = name
     self.content = declarations
   }
