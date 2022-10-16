@@ -1,6 +1,6 @@
 import SparkleCSS
 
-/// A container that stacks content vertically.
+/// A container that stacks its content vertically.
 public struct VStack: Component {
 
   // MARK: - Stored Properties

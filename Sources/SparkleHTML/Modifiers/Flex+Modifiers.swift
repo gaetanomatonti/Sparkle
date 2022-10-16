@@ -17,7 +17,7 @@ extension Component {
   /// - Parameter justification: The justification of the content.
   /// - Returns: The component updated with the justification.
   public func justifyContent(_ justification: Flex.Content.Justification) -> Component {
-    return rule(.justifyContent(justification))
+    rule(.justifyContent(justification))
   }
 
   /// Applies the specified flex content alignment.

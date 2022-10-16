@@ -1,6 +1,6 @@
 import SparkleCSS
 
-/// A container that stacks content horizontally.
+/// A container that stacks its content horizontally.
 public struct HStack: Component {
 
   // MARK: - Stored Properties

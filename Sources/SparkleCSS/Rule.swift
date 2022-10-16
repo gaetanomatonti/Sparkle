@@ -7,7 +7,7 @@ public struct Rule {
 
   /// The possible selectors that select HTML elements to style.
   public enum Selector: Hashable {
-    /// Selectes the element based on the class.
+    /// Selects the element based on the class.
     case `class`(_ name: String)
 
     /// Selects the element based on the element name.
