@@ -1,3 +1,5 @@
+import Foundation
+
 /// A unit of measurement.
 public enum Unit {
   /// Automatically calculate the margin.
@@ -23,10 +25,10 @@ extension Unit: Value {
         return "\(value)px"
 
       case let .em(value):
-        return "\(value)em"
+        return "\(value.escapedFloatingPoint)em"
 
       case let .rem(value):
-        return "\(value)rem"
+        return "\(value.escapedFloatingPoint)rem"
     }
   }
 }
