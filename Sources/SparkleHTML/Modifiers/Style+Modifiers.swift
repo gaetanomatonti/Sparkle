@@ -14,6 +14,32 @@ extension Component {
 // MARK: - Style Modifiers
 
 extension Component {
+  /// Sets the value of the gap between the elements.
+  /// - Parameter value: The value of the gap.
+  /// - Returns: The component updated with the gap.
+  public func gap(_ value: Unit) -> Component {
+    rule(.gap(value))
+  }
+
+  // MARK: - Flex
+
+  /// Displays the component as a flex container.
+  /// - Parameter direction: The direction of the layout.
+  /// - Returns: The component updated with the flex layout and direction.
+  public func flex(_ direction: Flex.Direction = .defaultValue) -> Component {
+    rule(
+      Rule(
+        "flex-\(direction.rawValue)",
+        declarations: [
+          .flex(),
+          .flex(direction)
+        ]
+      )
+    )
+  }
+
+  // MARK: Margin
+
   /// Applies a margin to the component.
   /// - Parameter value: The value of the margin.
   /// - Returns: The component updated with the newly generated margin class.

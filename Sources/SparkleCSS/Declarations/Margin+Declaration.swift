@@ -1,5 +1,3 @@
-import SparkleTools
-
 public extension Declaration {
   /// Creates a declaration to set the margins of a component.
   /// - Parameter value: The value of the margin on all edges.

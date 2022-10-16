@@ -17,7 +17,7 @@ public struct Rule {
   /// - Parameters:
   ///   - name: The name of the CSS class.
   ///   - declaration: The CSS declaration that sets a style.
-  public init(name: String, declaration: Declaration) {
+  public init(_ name: String, declaration: Declaration) {
     self.name = name
     self.content = [declaration]
   }
@@ -26,9 +26,9 @@ public struct Rule {
   /// - Parameters:
   ///   - name: The name of the CSS class.
   ///   - declaration: The list of CSS declarations that set styles.
-  public init(name: String, content: [Declaration]) {
+  public init(_ name: String, declarations: [Declaration]) {
     self.name = name
-    self.content = content
+    self.content = declarations
   }
 }
 
