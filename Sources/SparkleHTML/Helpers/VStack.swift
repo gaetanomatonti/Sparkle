@@ -51,5 +51,8 @@ public struct VStack: Component {
     }
     .flex(.column)
     .gap(spacing)
+    .justifyContent(contentJustification)
+    .alignContent(contentAlignment)
+    .alignItems(itemsAlignment)
   }
 }

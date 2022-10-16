@@ -38,6 +38,27 @@ extension Component {
     )
   }
 
+  /// Applies the specified flex content justification.
+  /// - Parameter justification: The justification of the content.
+  /// - Returns: The component updated with the justification.
+  public func justifyContent(_ justification: Flex.Content.Justification) -> Component {
+    return rule(.justifyContent(justification))
+  }
+
+  /// Applies the specified flex content alignment.
+  /// - Parameter justification: The alignment of the content.
+  /// - Returns: The component updated with the alignment.
+  public func alignContent(_ alignment: Flex.Content.Alignment) -> Component {
+    rule(.alignContent(alignment))
+  }
+
+  /// Applies the specified flex items alignment.
+  /// - Parameter justification: The alignment of the items.
+  /// - Returns: The component updated with the alignment.
+  public func alignItems(_ alignment: Flex.Item.Alignment) -> Component {
+    rule(.alignItems(alignment))
+  }
+
   // MARK: Margin
 
   /// Applies a margin to the component.

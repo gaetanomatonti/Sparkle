@@ -51,5 +51,8 @@ public struct HStack: Component {
     }
     .flex(.row)
     .gap(spacing)
+    .justifyContent(contentJustification)
+    .alignContent(contentAlignment)
+    .alignItems(itemsAlignment)
   }
 }
