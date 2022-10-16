@@ -6,3 +6,15 @@ workflows:
     name: "Test"
     scripts:
       - swift test
+    triggering:
+      events:
+        - push
+        - pull_request
+      branch_patterns:
+        - pattern: develop
+          include: true
+          source: true
+        - pattern: develop
+          include: true
+          source: false
+      cancel_previous_builds: true
