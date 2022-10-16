@@ -11,11 +11,12 @@ final class RenderTests: XCTestCase {
   // MARK: - CSS
 
   func testComponentStyleSheet() {
-    _ = Paragraph {
+    let component = Paragraph {
       Text("Hello World")
     }
     .margin(.pixel(8))
 
+    XCTAssertEqual(component.render(), "<p class=\"margin-8px\">Hello World</p>")
     XCTAssertEqual(EnvironmentValues.styleSheetRenderer.render(), ".margin-8px { margin: 8px; }")
   }
 

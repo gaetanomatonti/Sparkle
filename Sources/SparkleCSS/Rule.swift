@@ -26,7 +26,7 @@ public struct Rule {
   public let selector: Selector
 
   /// The declarations contained in the CSS rule.
-  public let content: [Declaration]
+  public let declarations: [Declaration]
 
   // MARK: - Init
 
@@ -36,7 +36,7 @@ public struct Rule {
   ///   - declaration: The list of CSS declarations that set a styles.
   public init(_ selector: Selector, declarations: Declaration...) {
     self.selector = selector
-    self.content = declarations
+    self.declarations = declarations
   }
 }
 
@@ -53,7 +53,7 @@ extension Rule: Hashable {
 extension Rule: Renderable {
   public func render() -> String {
     """
-    \(selector.render()) { \(content.render()) }
+    \(selector.render()) { \(declarations.render()) }
     """
   }
 }

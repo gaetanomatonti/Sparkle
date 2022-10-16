@@ -7,6 +7,10 @@ extension Component {
       return component.appending(attribute)
     }
 
+    if let body = body as? AttributedComponent {
+      return body.appending(attribute)
+    }
+
     if let body = body as? Element {
       return body.appending(attribute)
     }

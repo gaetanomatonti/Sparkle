@@ -7,7 +7,7 @@ extension Flex {
 extension Flex.Content {
   /// The possible alignments for the content of the flex layout.
   /// - Note: These only apply to the `align-content` property.
-  public enum Alignment: String, Value {
+  public enum Alignment: String, ValueWithDefaultValue {
     /// Items are packed in their default position.
     case normal
 
@@ -46,7 +46,7 @@ extension Flex.Content {
 
   /// The possible justifications for the content of the flex layout.
   /// - Note: These only apply to the `justify-content` property.
-  public enum Justification: String, Value {
+  public enum Justification: String, ValueWithDefaultValue {
     /// Items are packed toward the start of the direction.
     case flexStart = "flex-start"
 
@@ -80,7 +80,7 @@ extension Flex.Content {
 
 extension Flex {
   /// The possible direction of a flow layout.
-  public enum Direction: String, Value {
+  public enum Direction: String, ValueWithDefaultValue {
     /// Stacks items vertically.
     case column
 
@@ -111,7 +111,7 @@ extension Flex {
 extension Flex.Item {
   /// The possible alignments for the items of the flex layout.
   /// - Note: These only apply to the `align-items` property.
-  public enum Alignment: String, Value {
+  public enum Alignment: String, ValueWithDefaultValue {
     /// Stretches the items to fill the container.
     case stretch
 
