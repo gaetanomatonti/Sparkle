@@ -1,5 +1,5 @@
-/// A component that renders the `<head>` element.
-public struct Head: AttributedComponent {
+/// A component that renders a `<a>` container element.
+public struct Anchor: AttributedComponent {
 
   // MARK: - Stored Properties
 
@@ -22,7 +22,7 @@ public struct Head: AttributedComponent {
   // MARK: - Body
 
   public var body: Component {
-    Element(name: "head", attributes: attributes) {
+    Element(name: "a", attributes: attributes) {
       content
     }
   }

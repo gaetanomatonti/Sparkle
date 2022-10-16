@@ -1,5 +1,5 @@
-/// A component that renders a `<link>` element.
-public struct Link: AttributedComponent {
+/// A component that renders a `<img>` element.
+public struct Image: AttributedComponent {
 
   // MARK: - Stored Properties
 
@@ -16,6 +16,6 @@ public struct Link: AttributedComponent {
   // MARK: - Body
 
   public var body: Component {
-    Element(name: "link", attributes: attributes)
+    Element(name: "img", attributes: attributes)
   }
 }

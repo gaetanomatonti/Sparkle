@@ -1,9 +1,9 @@
 import SparkleTools
 
 /// A type representing an HTML element.
-public struct Element {
+public struct Element: AttributedComponent {
 
-  // MARK: - Data Structures
+  // MARK: - Structured Data
 
   /// The possible closing modes of an HTML element.
   enum ClosingMode {
@@ -28,7 +28,7 @@ public struct Element {
   let closingMode: ClosingMode
 
   /// The attributes of the element.
-  private(set) var attributes: Set<Attribute>
+  var attributes: Set<Attribute>
 
   // MARK: - Computed Properties
 
@@ -42,13 +42,7 @@ public struct Element {
       tag += attributes.sorted(by: { $0.name < $1.name }).render()
     }
 
-    switch closingMode {
-      case .standard:
-        tag += ">"
-
-      case .selfClosing:
-        tag += "/>"
-    }
+    tag += ">"
 
     return tag
   }
@@ -75,9 +69,9 @@ public struct Element {
   ///   - name: The name of the element.
   ///   - attributes: The attributes to add to the element.
   ///   - content: The content wrapped inside the element, if needed. Defaults to `nil`.
-  init(name: String, attributes: [Attribute] = [], content: Renderable? = nil) {
+  init(name: String, attributes: Set<Attribute> = [], content: Renderable? = nil) {
     self.name = name
-    self.attributes = Set(attributes)
+    self.attributes = attributes
     self.content = content
     self.closingMode = content == nil ? .selfClosing : .standard
   }
@@ -87,9 +81,9 @@ public struct Element {
   ///   - name: The name of the element.
   ///   - attributes: The attributes to add to the element.
   ///   - content: The closure that constructs the content wrapped inside the element.
-  init(name: String, attributes: [Attribute] = [], @ComponentBuilder content: () -> Renderable) {
+  init(name: String, attributes: Set<Attribute> = [], @ComponentBuilder content: () -> Renderable) {
     self.name = name
-    self.attributes = Set(attributes)
+    self.attributes = attributes
     self.content = content()
     self.closingMode = .standard
   }
@@ -100,21 +94,15 @@ public struct Element {
   /// - Parameter attribute: The attribute to add to the element.
   /// - Returns: The element updated with the new attribute.
   public func appending(_ attribute: Attribute) -> Element {
-    if let existingAttribute = attributes.first(where: { $0.name == attribute.name }) {
-      let updatedAttribute = existingAttribute.appending(values: attribute.values)
-      var updatedElement = self
-      updatedElement.attributes.remove(existingAttribute)
-      updatedElement.attributes.insert(updatedAttribute)
-      return updatedElement
-    } else {
-      return Element(name: name, attributes: attributes + [attribute], content: content)
-    }
+    var updatedAttributes = attributes
+    updatedAttributes.updating(attribute)
+    return Element(name: name, attributes: updatedAttributes, content: content)
   }
 }
 
 // MARK: - Component
 
-extension Element: Component {
+extension Element {
   public var body: Component {
     self
   }

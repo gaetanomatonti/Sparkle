@@ -1,5 +1,5 @@
-/// A component that renders the `<head>` element.
-public struct Head: AttributedComponent {
+/// A component that renders a `<video>` container element.
+public struct Video: AttributedComponent {
 
   // MARK: - Stored Properties
 
@@ -22,7 +22,7 @@ public struct Head: AttributedComponent {
   // MARK: - Body
 
   public var body: Component {
-    Element(name: "head", attributes: attributes) {
+    Element(name: "video", attributes: attributes) {
       content
     }
   }

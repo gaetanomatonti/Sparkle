@@ -1,6 +1,5 @@
-/// A component that renders raw text.
-/// Applying attributes and style modifiers to this component automatically wraps its content into a `<span>` element.
-public struct Text: AttributedComponent {
+/// A component that renders a `<h1>` element.
+public struct H1: AttributedComponent {
 
   // MARK: - Stored Properties
 
@@ -22,20 +21,16 @@ public struct Text: AttributedComponent {
   /// - Parameters:
   ///   - attributes: The attributes to add to the underlying element.
   ///   - content: The closure that constructs the content.
-  public init(_ attributes: Attribute..., content: () -> String) {
+  public init(_ attributes: Attribute..., @ComponentBuilder content: () -> Component) {
     self.attributes = Set(attributes)
-    self.content = RawText(content())
+    self.content = content()
   }
 
   // MARK: - Body
 
   public var body: Component {
-    if attributes.isEmpty {
+    Element(name: "h1", attributes: attributes) {
       content
-    } else {
-      Span(attributes) {
-        content
-      }
     }
   }
 }

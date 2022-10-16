@@ -13,6 +13,13 @@ public struct Attribute {
 
   // MARK: - Init
 
+  /// Creates a valueless HTML attribute.
+  /// - Parameter name: The name of the attribute.
+  init(_ name: String) {
+    self.name = name
+    self.values = []
+  }
+
   /// Creates a new HTML attribute.
   /// - Parameters:
   ///   - name: The name of the attribute.
@@ -58,6 +65,10 @@ extension Attribute: Hashable {
 
 extension Attribute: Renderable {
   public func render() -> String {
+    guard !values.isEmpty else {
+      return name
+    }
+
     let joinedValues = values
       .sorted()
       .joined(separator: " ")
