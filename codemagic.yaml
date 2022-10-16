@@ -16,5 +16,5 @@ workflows:
           source: false
       cancel_previous_builds: true
     scripts:
-      name: Test
-      - swift test
+      - name: Test
+        script: swift test
