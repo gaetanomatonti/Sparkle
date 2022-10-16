@@ -1,0 +1,9 @@
+workflows:
+  build: 
+    name: "Build"
+    script:
+      - swift build
+  test:
+    name: "Test"
+    script:
+      - swift test
