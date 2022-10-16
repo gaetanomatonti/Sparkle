@@ -1,8 +1,8 @@
-public extension Declaration {
+extension Declaration {
   /// Creates a declaration to set the padding of a component.
   /// - Parameter value: The value of the padding on all edges.
   /// - Returns: The declaration that sets the padding.
-  static func padding(_ value: Unit) -> Declaration {
+  public static func padding(_ value: Unit) -> Declaration {
     Declaration(property: "padding", value: value)
   }
 
@@ -11,7 +11,7 @@ public extension Declaration {
   ///   - vertical: The value of the vertical padding.
   ///   - horizontal: The value of the horizontal padding.
   /// - Returns: The declaration that sets the padding.
-  static func padding(vertical: Unit, horizontal: Unit) -> Declaration {
+  public static func padding(vertical: Unit, horizontal: Unit) -> Declaration {
     Declaration(property: "padding", values: [vertical, horizontal])
   }
 
@@ -21,7 +21,7 @@ public extension Declaration {
   ///   - horizontal: The value of the horizontal padding.
   ///   - bottom: The value of the bottom padding.
   /// - Returns: The declaration that sets the padding.
-  static func padding(top: Unit, horizontal: Unit, bottom: Unit) -> Declaration {
+  public static func padding(top: Unit, horizontal: Unit, bottom: Unit) -> Declaration {
     Declaration(property: "padding", values: [top, horizontal, bottom])
   }
 
@@ -32,7 +32,7 @@ public extension Declaration {
   ///   - bottom: The value of the bottom padding.
   ///   - left: The value of the left padding.
   /// - Returns: The declaration that sets the padding.
-  static func padding(top: Unit, right: Unit, bottom: Unit, left: Unit) -> Declaration {
+  public static func padding(top: Unit, right: Unit, bottom: Unit, left: Unit) -> Declaration {
     Declaration(property: "padding", values: [top, right, bottom, left])
   }
 
@@ -41,7 +41,7 @@ public extension Declaration {
   ///   - edge: The edge where the padding should be applied.
   ///   - value: The value of the padding to apply.
   /// - Returns: The declaration that sets the padding.
-  static func padding(_ edge: Edge, _ value: Unit) -> Declaration {
+  public static func padding(_ edge: Edge, _ value: Unit) -> Declaration {
     Declaration(property: "padding-\(edge.rawValue)", value: value)
   }
 }

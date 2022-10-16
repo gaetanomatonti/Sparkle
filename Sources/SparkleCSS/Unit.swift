@@ -16,6 +16,12 @@ public enum Unit {
 
   /// The rem unit.
   case rem(_ value: Double)
+
+  /// Percentage relative to the width of the viewport.
+  case vw(_ value: Double)
+
+  /// Percentage relative to the height of the viewport.
+  case vh(_ value: Double)
 }
 
 extension Unit: Value {
@@ -35,6 +41,12 @@ extension Unit: Value {
 
       case let .rem(value):
         return "\(value.escapedFloatingPoint)rem"
+
+      case let .vw(value):
+        return "\(value.escapedFloatingPoint)vw"
+
+      case let .vh(value):
+        return "\(value.escapedFloatingPoint)vh"
     }
   }
 }

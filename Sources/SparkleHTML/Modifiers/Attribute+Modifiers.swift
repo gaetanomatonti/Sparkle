@@ -1,7 +1,7 @@
-/// Adds the specified attribute to the underlying element.
-/// - Parameter attribute: The attribute to add to the element.
-/// - Returns: The component updated with the specified attribute.
 extension Component {
+  /// Adds the specified attribute to the underlying element.
+  /// - Parameter attribute: The attribute to add to the element.
+  /// - Returns: The component updated with the specified attribute.
   public func attribute(_ attribute: Attribute) -> Component {
     if let component = self as? AttributedComponent {
       return component.appending(attribute)
