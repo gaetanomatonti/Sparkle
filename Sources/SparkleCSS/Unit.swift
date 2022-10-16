@@ -1,5 +1,8 @@
 /// A unit of measurement.
 public enum Unit {
+  /// Automatically calculate the margin.
+  case auto
+
   /// The pixel unit.
   case pixel(_ value: Int)
 
@@ -13,6 +16,9 @@ public enum Unit {
 extension Unit: Value {
   public func render() -> String {
     switch self {
+      case .auto:
+        return "auto"
+        
       case let .pixel(value):
         return "\(value)px"
 

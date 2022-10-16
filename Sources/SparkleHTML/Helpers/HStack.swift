@@ -13,7 +13,7 @@ public struct HStack: Component {
 
   // MARK: - Init
 
-  init(spacing: Unit = .pixel(.zero), @ComponentBuilder content: () -> Component) {
+  public init(spacing: Unit = .pixel(.zero), @ComponentBuilder content: () -> Component) {
     self.spacing = spacing
     self.content = content()
   }
