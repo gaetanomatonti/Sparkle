@@ -3,9 +3,7 @@ import SparkleHTML
 struct ExamplePage: Page {
   var head: Component {
     Head {
-      Link()
-        .href("styles.css")
-        .rel(.stylesheet)
+      Link(.href("styles.css"), .rel(.stylesheet))
     }
   }
 

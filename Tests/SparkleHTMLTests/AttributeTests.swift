@@ -3,9 +3,7 @@ import XCTest
 
 final class AttributeTests: XCTestCase {
   func testValuelessAttribute() {
-    let sut = Script()
-    .defer()
-    .src("main.js")
+    let sut = Script(.defer, .src("main.js"))
 
     XCTAssertEqual(sut.render(), "<script defer src=\"main.js\"></script>")
   }

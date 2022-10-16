@@ -17,9 +17,7 @@ final class ComponentTests: XCTestCase {
   }
 
   func testTitle() {
-    let sut = Title {
-      "MyWebsite"
-    }
+    let sut = Title("MyWebsite")
 
     XCTAssertEqual(sut.render(), "<title>MyWebsite</title>")
   }

@@ -8,10 +8,9 @@ struct ForEach: Component {
 
   // MARK: - Init
 
-  /// Creates the list and its content from the builder closure.
-  /// Components created in the builder closure are automatically wrapped in a `<li>` element.
+  /// Creates a group of components from a collection of items.
   /// - Parameters:
-  ///   - items: The items to render inside the unordered list.
+  ///   - items: The items to render inside the group.
   ///   - content: The closure that constructs the content.
   public init<I>(_ items: [I], @ComponentBuilder content: (I) -> Component) {
     let components = items.map { item in
