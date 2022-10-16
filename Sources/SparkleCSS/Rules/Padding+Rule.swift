@@ -3,7 +3,10 @@ extension Rule {
   /// - Parameter value: The value of the padding on all edges.
   /// - Returns: The rule for a class that sets the padding.
   public static func padding(_ value: Unit) -> Rule {
-    Rule("padding-\(value.render())", declarations: .padding(value))
+    Rule(
+      .class("padding-\(value.render())"),
+      declarations: .padding(value)
+    )
   }
 
   /// Creates a rule that sets the padding of a component.
@@ -13,7 +16,7 @@ extension Rule {
   /// - Returns: The rule for a class that sets the padding.
   public static func padding(vertical: Unit, horizontal: Unit) -> Rule {
     Rule(
-      "padding-v-\(vertical.render())-h-\(horizontal.render())",
+      .class("padding-v-\(vertical.render())-h-\(horizontal.render())"),
       declarations: .padding(vertical: vertical, horizontal: horizontal)
     )
   }
@@ -27,7 +30,7 @@ extension Rule {
   /// - Returns: The rule for a class that sets the padding.
   public static func padding(top: Unit, right: Unit, bottom: Unit, left: Unit) -> Rule {
     Rule(
-      "padding-t-\(top.render())-r-\(right.render())-b-\(bottom.render())-l-\(left)",
+      .class("padding-t-\(top.render())-r-\(right.render())-b-\(bottom.render())-l-\(left)"),
       declarations: .padding(top: top, right: right, bottom: bottom, left: left)
     )
   }
@@ -39,7 +42,7 @@ extension Rule {
   /// - Returns: The rule for a class that sets the padding.
   public static func padding(_ edge: Edge, _ value: Unit) -> Rule {
     Rule(
-      "padding-\(edge.rawValue)-\(value.render())",
+      .class("padding-\(edge.rawValue)-\(value.render())"),
       declarations: .padding(edge, value)
     )
   }

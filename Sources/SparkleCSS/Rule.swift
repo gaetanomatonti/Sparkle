@@ -3,10 +3,27 @@ import SparkleTools
 /// A type representing a CSS rule applied as a class.
 public struct Rule {
 
+  // MARK: - Structured Data
+
+  /// The possible selectors that select HTML elements to style.
+  public enum Selector: Hashable {
+    /// Selectes the element based on the class.
+    case `class`(_ name: String)
+
+    /// Selects the element based on the element name.
+    case element(_ name: String)
+
+    /// Selects the element based on the identifier.
+    case identifier(_ name: String)
+
+    /// Selects all the elements.
+    case universal
+  }
+
   // MARK: - Stored Properties
 
-  /// The name of the CSS rule.
-  public let name: String
+  /// The selector of the CSS rule.
+  public let selector: Selector
 
   /// The declarations contained in the CSS rule.
   public let content: [Declaration]
@@ -17,8 +34,8 @@ public struct Rule {
   /// - Parameters:
   ///   - name: The name of the CSS class.
   ///   - declaration: The list of CSS declarations that set a styles.
-  public init(_ name: String, declarations: Declaration...) {
-    self.name = name
+  public init(_ selector: Selector, declarations: Declaration...) {
+    self.selector = selector
     self.content = declarations
   }
 }
@@ -27,7 +44,7 @@ public struct Rule {
 
 extension Rule: Hashable {
   public func hash(into hasher: inout Hasher) {
-    hasher.combine(name)
+    hasher.combine(selector)
   }
 }
 
@@ -36,7 +53,25 @@ extension Rule: Hashable {
 extension Rule: Renderable {
   public func render() -> String {
     """
-    .\(name) { \(content.render()) }
+    \(selector.render()) { \(content.render()) }
     """
+  }
+}
+
+extension Rule.Selector: Renderable {
+  public func render() -> String {
+    switch self {
+      case let .class(name):
+        return ".\(name)"
+
+      case let .identifier(name):
+        return "#\(name)"
+
+      case let .element(name):
+        return name
+
+      case .universal:
+        return "*"
+    }
   }
 }
