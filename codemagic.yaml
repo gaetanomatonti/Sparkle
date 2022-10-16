@@ -1,11 +1,8 @@
-environment:
-  xcode: 14.0
-
 workflows:
   test: 
-    name: "Test"
-    scripts:
-      - swift test
+    name: Test
+    environment:
+      xcode: 14.0
     triggering:
       events:
         - push
@@ -18,3 +15,6 @@ workflows:
           include: true
           source: false
       cancel_previous_builds: true
+    scripts:
+      name: Test
+      - swift test
