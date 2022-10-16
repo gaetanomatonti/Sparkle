@@ -1,10 +1,10 @@
-/// A component that renders a `<p>` element.
-public struct Paragraph: AttributedComponent {
+/// A component that renders a `<h2>` element.
+public struct H2: AttributedComponent {
 
   // MARK: - Stored Properties
 
   var attributes: Set<Attribute>
-  
+
   /// The content of the component.
   let content: Component
 
@@ -29,7 +29,7 @@ public struct Paragraph: AttributedComponent {
   // MARK: - Body
 
   public var body: Component {
-    Element(name: "p", attributes: attributes) {
+    Element(name: "h2", attributes: attributes) {
       content
     }
   }

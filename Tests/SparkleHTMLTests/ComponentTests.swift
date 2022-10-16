@@ -152,15 +152,13 @@ final class ComponentTests: XCTestCase {
   }
 
   func testHeadingOne() {
-    let sut = Heading(level: .one) {
-      Text("Hello World")
-    }
+    let sut = H1("Hello World")
 
     XCTAssertEqual(sut.render(), "<h1>Hello World</h1>")
   }
 
   func testHeadingTwo() {
-    let sut = Heading(level: .two) {
+    let sut = H2 {
       Text("Hello World")
     }
 
@@ -168,7 +166,7 @@ final class ComponentTests: XCTestCase {
   }
 
   func testHeadingThree() {
-    let sut = Heading(level: .three) {
+    let sut = H3 {
       Text("Hello World")
     }
 
@@ -176,7 +174,7 @@ final class ComponentTests: XCTestCase {
   }
 
   func testHeadingFour() {
-    let sut = Heading(level: .four) {
+    let sut = H4 {
       Text("Hello World")
     }
 
@@ -184,7 +182,7 @@ final class ComponentTests: XCTestCase {
   }
 
   func testHeadingFive() {
-    let sut = Heading(level: .five) {
+    let sut = H5 {
       Text("Hello World")
     }
 
@@ -192,7 +190,7 @@ final class ComponentTests: XCTestCase {
   }
 
   func testHeadingSix() {
-    let sut = Heading(level: .six) {
+    let sut = H6 {
       Text("Hello World")
     }
 
