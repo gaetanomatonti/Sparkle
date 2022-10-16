@@ -16,14 +16,12 @@ public struct List: AttributedComponent {
   ///   - items: The items to render inside the unordered list.
   ///   - content: The closure that constructs the content.
   public init<I>(_ items: [I], @ComponentBuilder content: (I) -> Component) {
-    let components = items.map { item in
+    self.attributes = []
+    self.content = ForEach(items) { item in
       ListItem {
         content(item)
       }
     }
-
-    self.content = Group(components: components)
-    self.attributes = []
   }
 
   // MARK: - Init
