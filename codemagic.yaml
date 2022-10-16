@@ -1,0 +1,8 @@
+environment:
+  xcode: 14.0
+
+workflows:
+  test: 
+    name: "Test"
+    scripts:
+      - swift test
