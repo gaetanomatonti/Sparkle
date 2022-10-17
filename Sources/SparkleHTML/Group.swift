@@ -11,13 +11,4 @@ public struct Group: Component {
   public var body: Component {
     fatalError("This body should not be accessed.")
   }
-
-  // MARK: - Functions
-
-  public func render() -> String {
-    components.map {
-      $0.render()
-    }
-    .joined()
-  }
 }

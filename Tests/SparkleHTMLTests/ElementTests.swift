@@ -1,13 +1,20 @@
 import XCTest
+import SparkleTools
 @testable import SparkleHTML
 
 final class ElementTests: XCTestCase {
+  var renderer: HTMLRenderer!
+
+  override func setUp() {
+    renderer = HTMLRenderer(indentation: Indentation(kind: .none, allowsNewlines: false))
+  }
+
   func testEmptyElement() {
     let sut = Element(name: "head") {
 
     }
 
-    XCTAssertEqual(sut.render(), "<head></head>")
+    XCTAssertEqual(renderer.render(sut), "<head></head>")
   }
 
   func testStandardTag() {
@@ -16,10 +23,10 @@ final class ElementTests: XCTestCase {
       attributes: [
         Attribute("class", value: "text-bold")
       ],
-      content: "Hello World"
+      content: Text("Hello World")
     )
 
-    XCTAssertEqual(sut.render(), "<p class=\"text-bold\">Hello World</p>")
+    XCTAssertEqual(renderer.render(sut), "<p class=\"text-bold\">Hello World</p>")
   }
 
   func testStandardTagWithMultipleAttributes() {
@@ -29,10 +36,10 @@ final class ElementTests: XCTestCase {
         Attribute("class", value: "text-bold"),
         Attribute("href", value: "/hello")
       ],
-      content: "Hello World"
+      content: Text("Hello World")
     )
 
-    XCTAssertEqual(sut.render(), "<a class=\"text-bold\" href=\"/hello\">Hello World</a>")
+    XCTAssertEqual(renderer.render(sut), "<a class=\"text-bold\" href=\"/hello\">Hello World</a>")
   }
 
   func testSelfClosingTag() {
@@ -43,6 +50,6 @@ final class ElementTests: XCTestCase {
       ]
     )
 
-    XCTAssertEqual(sut.render(), "<meta charset=\"UTF-8\">")
+    XCTAssertEqual(renderer.render(sut), "<meta charset=\"UTF-8\">")
   }
 }

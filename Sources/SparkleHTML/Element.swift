@@ -22,7 +22,7 @@ public struct Element: AttributedComponent {
   let name: String
 
   /// The content of the element, placed between the opening and closing tags.
-  let content: Renderable?
+  let content: Component?
 
   /// The closing mode of the element.
   let closingMode: ClosingMode
@@ -33,7 +33,7 @@ public struct Element: AttributedComponent {
   // MARK: - Computed Properties
 
   /// The string representation of the opening tag.
-  private var openingTag: String {
+  var openingTag: String {
     var tag = "<"
     tag += name
 
@@ -48,14 +48,10 @@ public struct Element: AttributedComponent {
   }
 
   /// The string representation of the closing tag, if exists.
-  private var closingTag: String? {
+  var closingTag: String? {
     switch closingMode {
       case .standard:
-        guard let content = content else {
-          return nil
-        }
-
-        return content.render() + "</" + name + ">"
+        return "</" + name + ">"
 
       case .selfClosing:
         return nil
@@ -69,7 +65,7 @@ public struct Element: AttributedComponent {
   ///   - name: The name of the element.
   ///   - attributes: The attributes to add to the element.
   ///   - content: The content wrapped inside the element, if needed. Defaults to `nil`.
-  init(name: String, attributes: Set<Attribute> = [], content: Renderable? = nil) {
+  init(name: String, attributes: Set<Attribute> = [], content: Component? = nil) {
     self.name = name
     self.attributes = attributes
     self.content = content
@@ -81,7 +77,7 @@ public struct Element: AttributedComponent {
   ///   - name: The name of the element.
   ///   - attributes: The attributes to add to the element.
   ///   - content: The closure that constructs the content wrapped inside the element.
-  init(name: String, attributes: Set<Attribute> = [], @ComponentBuilder content: () -> Renderable) {
+  init(name: String, attributes: Set<Attribute> = [], @ComponentBuilder content: () -> Component) {
     self.name = name
     self.attributes = attributes
     self.content = content()
@@ -105,13 +101,5 @@ public struct Element: AttributedComponent {
 extension Element {
   public var body: Component {
     self
-  }
-}
-
-// MARK: - Renderable
-
-extension Element: Renderable {
-  public func render() -> String {
-    openingTag + (closingTag ?? "")
   }
 }
