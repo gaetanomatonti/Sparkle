@@ -6,7 +6,7 @@ public final class StyleSheetRenderer {
 
   // MARK: - Stored Properties
 
-  /// The set of imports statements.
+  /// The set of `@import` statements.
   var imports: Set<Import>
 
   /// The set of rules that should be rendered.
