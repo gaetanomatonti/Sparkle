@@ -13,12 +13,3 @@ public struct EnvironmentValues {
     }
   }
 }
-
-@propertyWrapper
-public struct Environment<Value> {
-  public var wrappedValue: Value
-
-  public init(_ keyPath: KeyPath<EnvironmentValues, Value>) {
-    wrappedValue = EnvironmentValues.current[keyPath: keyPath]
-  }
-}
