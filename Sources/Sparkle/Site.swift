@@ -33,9 +33,9 @@ public extension Site {
 }
 
 extension Site {
-  /// Configures the CSS renderer.
-  /// - Parameter configure: A closure that allows to configure the main `Renderer` instance.
-  public func configureRenderer(_ configure: (Renderer) -> Void) {
+  /// Configures the CSS stylesheet renderer.
+  /// - Parameter configure: A closure that allows to configure the main `StyleSheetRenderer` instance.
+  public func configureStyleSheet(_ configure: (StyleSheetRenderer) -> Void) {
     configure(EnvironmentValues.styleSheetRenderer)
   }
 

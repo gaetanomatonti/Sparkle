@@ -5,7 +5,7 @@ import SparkleTools
 
 final class RenderTests: XCTestCase {
   override func setUp() {
-    EnvironmentValues.styleSheetRenderer = Renderer()
+    EnvironmentValues.styleSheetRenderer = StyleSheetRenderer()
   }
 
   // MARK: - CSS
