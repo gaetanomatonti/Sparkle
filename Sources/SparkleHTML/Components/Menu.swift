@@ -38,7 +38,7 @@ public struct Menu: AttributedComponent {
   // MARK: - Body
 
   public var body: Component {
-    Element(name: "menu", attributes: attributes) {
+    Element(tag: Tag(name: "menu", kind: .standard, attributes: attributes)) {
       content
     }
   }

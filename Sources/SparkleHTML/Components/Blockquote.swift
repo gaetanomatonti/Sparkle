@@ -22,7 +22,7 @@ public struct Blockquote: AttributedComponent {
   // MARK: - Body
 
   public var body: Component {
-    Element(name: "blockquote", attributes: attributes) {
+    Element(tag: Tag(name: "blockquote", kind: .standard, attributes: attributes)) {
       content
     }
   }

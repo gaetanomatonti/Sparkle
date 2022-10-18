@@ -10,7 +10,7 @@ final class ElementTests: XCTestCase {
   }
 
   func testEmptyElement() {
-    let sut = Element(name: "head") {
+    let sut = Element(tag: Tag(name: "head", kind: .standard)) {
 
     }
 
@@ -19,10 +19,13 @@ final class ElementTests: XCTestCase {
 
   func testStandardTag() {
     let sut = Element(
-      name: "p",
-      attributes: [
-        Attribute("class", value: "text-bold")
-      ],
+      tag: Tag(
+        name: "p",
+        kind: .standard,
+        attributes: [
+          Attribute("class", value: "text-bold")
+        ]
+      ),
       content: Text("Hello World")
     )
 
@@ -31,11 +34,14 @@ final class ElementTests: XCTestCase {
 
   func testStandardTagWithMultipleAttributes() {
     let sut = Element(
-      name: "a",
-      attributes: [
-        Attribute("class", value: "text-bold"),
-        Attribute("href", value: "/hello")
-      ],
+      tag: Tag(
+        name: "a",
+        kind: .standard,
+        attributes: [
+          Attribute("class", value: "text-bold"),
+          Attribute("href", value: "/hello")
+        ]
+      ),
       content: Text("Hello World")
     )
 
@@ -44,10 +50,13 @@ final class ElementTests: XCTestCase {
 
   func testSelfClosingTag() {
     let sut = Element(
-      name: "meta",
-      attributes: [
-        Attribute("charset", value: "UTF-8")
-      ]
+      tag: Tag(
+        name: "meta",
+        kind: .selfClosing,
+        attributes: [
+          Attribute("charset", value: "UTF-8")
+        ]
+      )
     )
 
     XCTAssertEqual(renderer.render(sut), "<meta charset=\"UTF-8\">")

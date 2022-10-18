@@ -22,7 +22,7 @@ public struct Anchor: AttributedComponent {
   // MARK: - Body
 
   public var body: Component {
-    Element(name: "a", attributes: attributes) {
+    Element(tag: Tag(name: "a", kind: .standard, attributes: attributes)) {
       content
     }
   }

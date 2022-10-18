@@ -16,6 +16,6 @@ public struct Link: AttributedComponent {
   // MARK: - Body
 
   public var body: Component {
-    Element(name: "link", attributes: attributes)
+    Element(tag: Tag(name: "link", kind: .selfClosing, attributes: attributes))
   }
 }

@@ -26,7 +26,7 @@ public struct Script: AttributedComponent {
   // MARK: - Body
 
   public var body: Component {
-    Element(name: "script", attributes: attributes) {
+    Element(tag: Tag(name: "script", kind: .standard, attributes: attributes)) {
       content
     }
   }

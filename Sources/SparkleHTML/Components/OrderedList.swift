@@ -38,7 +38,7 @@ public struct OrderedList: AttributedComponent {
   // MARK: - Body
 
   public var body: Component {
-    Element(name: "ol", attributes: attributes) {
+    Element(tag: Tag(name: "ol", kind: .standard, attributes: attributes)) {
       content
     }
   }

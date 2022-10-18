@@ -76,3 +76,9 @@ extension Attribute: Renderable {
     return "\(name)=\"\(joinedValues)\""
   }
 }
+
+extension Attribute: Comparable {
+  public static func <(lhs: Attribute, rhs: Attribute) -> Bool {
+    lhs.name < rhs.name
+  }
+}

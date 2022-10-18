@@ -29,7 +29,7 @@ public struct H4: AttributedComponent {
   // MARK: - Body
 
   public var body: Component {
-    Element(name: "h4", attributes: attributes) {
+    Element(tag: Tag(name: "h4", kind: .standard, attributes: attributes)) {
       content
     }
   }

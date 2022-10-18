@@ -22,7 +22,7 @@ public struct Navigation: AttributedComponent {
   // MARK: - Body
 
   public var body: Component {
-    Element(name: "nav", attributes: attributes) {
+    Element(tag: Tag(name: "nav", kind: .standard, attributes: attributes)) {
       content
     }
   }

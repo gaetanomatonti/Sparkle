@@ -32,7 +32,7 @@ extension HTMLRenderer {
 
       indentation.description
 
-      element.openingTag
+      TagRenderer().renderOpeningTag(element.tag)
 
       if let content = element.content {
         ComponentRenderer(indentation: indentation.indent()).render(content)
@@ -40,7 +40,7 @@ extension HTMLRenderer {
 
       indentation.description
 
-      element.closingTag ?? ""
+      TagRenderer().renderClosingTag(element.tag) ?? ""
 
       if indentation.shouldInsertNewline {
         "\n"

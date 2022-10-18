@@ -22,7 +22,7 @@ public struct Video: AttributedComponent {
   // MARK: - Body
 
   public var body: Component {
-    Element(name: "video", attributes: attributes) {
+    Element(tag: Tag(name: "video", kind: .standard, attributes: attributes)) {
       content
     }
   }

@@ -16,6 +16,6 @@ public struct Meta: AttributedComponent {
   // MARK: - Body
 
   public var body: Component {
-    Element(name: "meta", attributes: attributes)
+    Element(tag: Tag(name: "meta", kind: .selfClosing, attributes: attributes))
   }
 }

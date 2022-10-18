@@ -29,7 +29,7 @@ public struct Paragraph: AttributedComponent {
   // MARK: - Body
 
   public var body: Component {
-    Element(name: "p", attributes: attributes) {
+    Element(tag: Tag(name: "p", kind: .standard, attributes: attributes)) {
       content
     }
   }

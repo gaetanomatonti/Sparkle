@@ -22,7 +22,7 @@ public struct Body: AttributedComponent {
   // MARK: - Body
 
   public var body: Component {
-    Element(name: "body", attributes: attributes) {
+    Element(tag: Tag(name: "body", kind: .standard, attributes: attributes)) {
       content
     }
   }

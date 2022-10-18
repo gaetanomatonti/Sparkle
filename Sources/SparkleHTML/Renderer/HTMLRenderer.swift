@@ -33,7 +33,7 @@ public struct HTMLRenderer {
 
     ElementRenderer(indentation: indentation)
       .render(
-        Element(name: "html") {
+        Element(tag: Tag(name: "html", kind: .standard)) {
           page.head
 
           page.body

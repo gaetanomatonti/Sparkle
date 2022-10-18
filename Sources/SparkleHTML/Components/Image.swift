@@ -16,6 +16,6 @@ public struct Image: AttributedComponent {
   // MARK: - Body
 
   public var body: Component {
-    Element(name: "img", attributes: attributes)
+    Element(tag: Tag(name: "img", kind: .selfClosing, attributes: attributes))
   }
 }
