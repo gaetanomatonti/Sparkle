@@ -45,7 +45,8 @@ extension Site {
     let packagePath = FileManager.default.packagePath(from: filePath)
     let outputPath = packagePath.appendingPathComponent("Output")
 
-    let htmlGenerator = Generator(content: homepage.render())
+    let renderer = HTMLRenderer()
+    let htmlGenerator = Generator(content: renderer.render(homepage))
     try htmlGenerator.write(file: "index", with: "html", to: outputPath)
 
     let cssGenerator = Generator(content: EnvironmentValues.styleSheetRenderer.render())

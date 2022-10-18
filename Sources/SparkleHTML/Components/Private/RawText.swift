@@ -17,7 +17,7 @@ struct RawText: Component {
   // MARK: - Body
 
   var body: Component {
-    fatalError("This body should not be accessed.")
+    EmptyComponent()
   }
 
   // MARK: - Functions

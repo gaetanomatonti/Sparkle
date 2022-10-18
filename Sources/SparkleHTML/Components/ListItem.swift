@@ -22,7 +22,7 @@ public struct ListItem: AttributedComponent {
   // MARK: - Body
 
   public var body: Component {
-    Element(name: "li", attributes: attributes) {
+    Element(tag: Tag(name: "li", kind: .standard, attributes: attributes)) {
       content
     }
   }

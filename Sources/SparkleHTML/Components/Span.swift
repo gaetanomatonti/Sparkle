@@ -39,7 +39,7 @@ public struct Span: AttributedComponent {
   // MARK: - Body
 
   public var body: Component {
-    Element(name: "span", attributes: attributes) {
+    Element(tag: Tag(name: "span", kind: .standard, attributes: attributes)) {
       content
     }
   }

@@ -38,7 +38,7 @@ public struct List: AttributedComponent {
   // MARK: - Body
 
   public var body: Component {
-    Element(name: "ul", attributes: attributes) {
+    Element(tag: Tag(name: "ul", kind: .standard, attributes: attributes)) {
       content
     }
   }

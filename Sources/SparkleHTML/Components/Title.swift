@@ -17,7 +17,7 @@ public struct Title: Component {
   // MARK: - Body
 
   public var body: Component {
-    Element(name: "title") {
+    Element(tag: Tag(name: "title", kind: .standard)) {
       content
     }
   }

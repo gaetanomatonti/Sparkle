@@ -1,11 +1,18 @@
 import XCTest
+import SparkleTools
 @testable import SparkleHTML
 
 final class ComponentTests: XCTestCase {
+  var renderer: HTMLRenderer.ComponentRenderer!
+
+  override func setUp() {
+    renderer = HTMLRenderer.ComponentRenderer(indentation: Indentation(kind: .none, allowsNewlines: false))
+  }
+
   func testText() {
     let sut = Text("Hello World")
 
-    XCTAssertEqual(sut.render(), "Hello World")
+    XCTAssertEqual(renderer.render(sut), "Hello World")
   }
 
   func testHead() {
@@ -13,25 +20,25 @@ final class ComponentTests: XCTestCase {
 
     }
 
-    XCTAssertEqual(sut.render(), "<head></head>")
+    XCTAssertEqual(renderer.render(sut), "<head></head>")
   }
 
   func testTitle() {
     let sut = Title("MyWebsite")
 
-    XCTAssertEqual(sut.render(), "<title>MyWebsite</title>")
+    XCTAssertEqual(renderer.render(sut), "<title>MyWebsite</title>")
   }
 
   func testLink() {
     let sut = Link()
 
-    XCTAssertEqual(sut.render(), "<link>")
+    XCTAssertEqual(renderer.render(sut), "<link>")
   }
 
   func testMeta() {
     let sut = Meta()
 
-    XCTAssertEqual(sut.render(), "<meta>")
+    XCTAssertEqual(renderer.render(sut), "<meta>")
   }
 
   func testScript() {
@@ -39,7 +46,7 @@ final class ComponentTests: XCTestCase {
       "console.log('hello world')"
     }
 
-    XCTAssertEqual(sut.render(), "<script>console.log('hello world')</script>")
+    XCTAssertEqual(renderer.render(sut), "<script>console.log('hello world')</script>")
   }
 
   func testDiv() {
@@ -47,7 +54,7 @@ final class ComponentTests: XCTestCase {
 
     }
 
-    XCTAssertEqual(sut.render(), "<div></div>")
+    XCTAssertEqual(renderer.render(sut), "<div></div>")
   }
 
   func testArticle() {
@@ -55,7 +62,7 @@ final class ComponentTests: XCTestCase {
 
     }
 
-    XCTAssertEqual(sut.render(), "<article></article>")
+    XCTAssertEqual(renderer.render(sut), "<article></article>")
   }
 
   func testHeader() {
@@ -63,7 +70,7 @@ final class ComponentTests: XCTestCase {
 
     }
 
-    XCTAssertEqual(sut.render(), "<header></header>")
+    XCTAssertEqual(renderer.render(sut), "<header></header>")
   }
 
   func testFooter() {
@@ -71,7 +78,7 @@ final class ComponentTests: XCTestCase {
 
     }
 
-    XCTAssertEqual(sut.render(), "<footer></footer>")
+    XCTAssertEqual(renderer.render(sut), "<footer></footer>")
   }
 
   func testNavigation() {
@@ -79,7 +86,7 @@ final class ComponentTests: XCTestCase {
 
     }
 
-    XCTAssertEqual(sut.render(), "<nav></nav>")
+    XCTAssertEqual(renderer.render(sut), "<nav></nav>")
   }
 
   func testSection() {
@@ -87,7 +94,7 @@ final class ComponentTests: XCTestCase {
 
     }
 
-    XCTAssertEqual(sut.render(), "<section></section>")
+    XCTAssertEqual(renderer.render(sut), "<section></section>")
   }
 
   func testAside() {
@@ -95,7 +102,7 @@ final class ComponentTests: XCTestCase {
 
     }
 
-    XCTAssertEqual(sut.render(), "<aside></aside>")
+    XCTAssertEqual(renderer.render(sut), "<aside></aside>")
   }
 
   func testMain() {
@@ -103,7 +110,7 @@ final class ComponentTests: XCTestCase {
 
     }
 
-    XCTAssertEqual(sut.render(), "<main></main>")
+    XCTAssertEqual(renderer.render(sut), "<main></main>")
   }
 
   func testBlockquote() {
@@ -111,7 +118,7 @@ final class ComponentTests: XCTestCase {
 
     }
 
-    XCTAssertEqual(sut.render(), "<blockquote></blockquote>")
+    XCTAssertEqual(renderer.render(sut), "<blockquote></blockquote>")
   }
 
   func testListItem() {
@@ -119,7 +126,7 @@ final class ComponentTests: XCTestCase {
 
     }
 
-    XCTAssertEqual(sut.render(), "<li></li>")
+    XCTAssertEqual(renderer.render(sut), "<li></li>")
   }
 
   func testList() {
@@ -128,7 +135,7 @@ final class ComponentTests: XCTestCase {
       Text(item)
     }
 
-    XCTAssertEqual(sut.render(), "<ul><li>Hello</li><li>World</li></ul>")
+    XCTAssertEqual(renderer.render(sut), "<ul><li>Hello</li><li>World</li></ul>")
   }
 
   func testOrderedList() {
@@ -137,7 +144,7 @@ final class ComponentTests: XCTestCase {
       Text(item)
     }
 
-    XCTAssertEqual(sut.render(), "<ol><li>Hello</li><li>World</li></ol>")
+    XCTAssertEqual(renderer.render(sut), "<ol><li>Hello</li><li>World</li></ol>")
   }
 
   func testMenu() {
@@ -146,13 +153,13 @@ final class ComponentTests: XCTestCase {
       Text(item)
     }
 
-    XCTAssertEqual(sut.render(), "<menu><li>Hello</li><li>World</li></menu>")
+    XCTAssertEqual(renderer.render(sut), "<menu><li>Hello</li><li>World</li></menu>")
   }
 
   func testHeadingOne() {
     let sut = H1("Hello World")
 
-    XCTAssertEqual(sut.render(), "<h1>Hello World</h1>")
+    XCTAssertEqual(renderer.render(sut), "<h1>Hello World</h1>")
   }
 
   func testHeadingTwo() {
@@ -160,7 +167,7 @@ final class ComponentTests: XCTestCase {
       Text("Hello World")
     }
 
-    XCTAssertEqual(sut.render(), "<h2>Hello World</h2>")
+    XCTAssertEqual(renderer.render(sut), "<h2>Hello World</h2>")
   }
 
   func testHeadingThree() {
@@ -168,7 +175,7 @@ final class ComponentTests: XCTestCase {
       Text("Hello World")
     }
 
-    XCTAssertEqual(sut.render(), "<h3>Hello World</h3>")
+    XCTAssertEqual(renderer.render(sut), "<h3>Hello World</h3>")
   }
 
   func testHeadingFour() {
@@ -176,7 +183,7 @@ final class ComponentTests: XCTestCase {
       Text("Hello World")
     }
 
-    XCTAssertEqual(sut.render(), "<h4>Hello World</h4>")
+    XCTAssertEqual(renderer.render(sut), "<h4>Hello World</h4>")
   }
 
   func testHeadingFive() {
@@ -184,7 +191,7 @@ final class ComponentTests: XCTestCase {
       Text("Hello World")
     }
 
-    XCTAssertEqual(sut.render(), "<h5>Hello World</h5>")
+    XCTAssertEqual(renderer.render(sut), "<h5>Hello World</h5>")
   }
 
   func testHeadingSix() {
@@ -192,13 +199,13 @@ final class ComponentTests: XCTestCase {
       Text("Hello World")
     }
 
-    XCTAssertEqual(sut.render(), "<h6>Hello World</h6>")
+    XCTAssertEqual(renderer.render(sut), "<h6>Hello World</h6>")
   }
 
   func testParagraph() {
     let sut = Paragraph("Hello World")
 
-    XCTAssertEqual(sut.render(), "<p>Hello World</p>")
+    XCTAssertEqual(renderer.render(sut), "<p>Hello World</p>")
   }
 
   func testAnchor() {
@@ -206,7 +213,7 @@ final class ComponentTests: XCTestCase {
 
     }
 
-    XCTAssertEqual(sut.render(), "<a></a>")
+    XCTAssertEqual(renderer.render(sut), "<a></a>")
   }
 
   func testSpan() {
@@ -214,7 +221,7 @@ final class ComponentTests: XCTestCase {
       Text("Hello World")
     }
 
-    XCTAssertEqual(sut.render(), "<span>Hello World</span>")
+    XCTAssertEqual(renderer.render(sut), "<span>Hello World</span>")
   }
 
   func testAutomaticSpanWrapping() {
@@ -225,13 +232,13 @@ final class ComponentTests: XCTestCase {
         .class("text-red")
     }
 
-    XCTAssertEqual(sut.render(), "<p>Hello <span class=\"text-red\">World</span></p>")
+    XCTAssertEqual(renderer.render(sut), "<p>Hello <span class=\"text-red\">World</span></p>")
   }
 
   func testImage() {
     let sut = Image()
 
-    XCTAssertEqual(sut.render(), "<img>")
+    XCTAssertEqual(renderer.render(sut), "<img>")
   }
 
   func testVideo() {
@@ -239,7 +246,7 @@ final class ComponentTests: XCTestCase {
 
     }
 
-    XCTAssertEqual(sut.render(), "<video></video>")
+    XCTAssertEqual(renderer.render(sut), "<video></video>")
   }
 
   // MARK: Helpers
@@ -250,6 +257,6 @@ final class ComponentTests: XCTestCase {
     }
     .class("margin-0")
 
-    XCTAssertEqual(sut.render(), "<div class=\"content-normal flex-row gap-0px items-stretch justify-flex-start margin-0\"></div>")
+    XCTAssertEqual(renderer.render(sut), "<div class=\"content-normal flex-row gap-0px items-stretch justify-flex-start margin-0\"></div>")
   }
 }

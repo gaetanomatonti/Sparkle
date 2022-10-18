@@ -6,6 +6,9 @@ public final class StyleSheetRenderer {
 
   // MARK: - Stored Properties
 
+  /// The indentation to apply to the document.
+  let indentation: Indentation
+
   /// The set of `@import` statements.
   var imports: Set<Import>
 
@@ -16,7 +19,8 @@ public final class StyleSheetRenderer {
 
   /// Creates a new instance of `Render` by specifying a set of rules to render.
   /// - Parameter rules: The set of rules that should be rendered.
-  public init(imports: Set<Import> = [], rules: Set<Rule> = []) {
+  public init(indentation: Indentation = Indentation(), imports: Set<Import> = [], rules: Set<Rule> = []) {
+    self.indentation = indentation
     self.imports = imports
     self.rules = rules
   }
@@ -38,24 +42,32 @@ public final class StyleSheetRenderer {
   /// Renders the rules in `String` format, sorted alphabetically.
   public func render() -> String {
     let imports = imports
-      .sorted { lhs, rhs in
-        lhs.render() < rhs.render()
-      }
       .map { statement in
-        statement.render()
+        ImportRenderer(indentation: indentation).render(statement)
       }
-      .joined(separator: "\n")
+      .sorted()
+      .joined()
 
     let rules = rules
+      .filter { rule in
+        !rule.declarations.isEmpty
+      }
       .sorted { lhs, rhs in
-        lhs.selector.render() < rhs.selector.render()
+        lhs.selector < rhs.selector
       }
       .map { rule in
-        rule.render()
+        RuleRenderer(indentation: indentation).render(rule)
       }
-      .joined(separator: "\n")
+      .joined(separator: indentation.allowsNewlines ? "\n\n" : "")
 
-    return imports + rules
+    return [
+      imports,
+      rules
+    ]
+    .filter {
+      !$0.isEmpty
+    }
+    .joined(separator: indentation.allowsNewlines ? "\n" : "")
   }
 }
 

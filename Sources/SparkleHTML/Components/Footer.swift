@@ -22,7 +22,7 @@ public struct Footer: AttributedComponent {
   // MARK: - Body
 
   public var body: Component {
-    Element(name: "footer", attributes: attributes) {
+    Element(tag: Tag(name: "footer", kind: .standard, attributes: attributes)) {
       content
     }
   }

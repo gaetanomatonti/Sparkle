@@ -1,11 +1,18 @@
 import XCTest
+import SparkleTools
 @testable import SparkleHTML
 
 final class AttributeTests: XCTestCase {
+  var renderer: HTMLRenderer.ComponentRenderer!
+
+  override func setUp() {
+    renderer = HTMLRenderer.ComponentRenderer(indentation: Indentation(kind: .none, allowsNewlines: false))
+  }
+
   func testValuelessAttribute() {
     let sut = Script(.defer, .src("main.js"))
 
-    XCTAssertEqual(sut.render(), "<script defer src=\"main.js\"></script>")
+    XCTAssertEqual(renderer.render(sut), "<script defer src=\"main.js\"></script>")
   }
 
   func testComponentWithModifier() {
@@ -14,7 +21,7 @@ final class AttributeTests: XCTestCase {
     }
     .class("text-bold")
 
-    XCTAssertEqual(sut.render(), "<p class=\"text-bold\">Hello World</p>")
+    XCTAssertEqual(renderer.render(sut), "<p class=\"text-bold\">Hello World</p>")
   }
 
   func testNestedComponentWithModifiers() {
@@ -26,7 +33,7 @@ final class AttributeTests: XCTestCase {
     }
     .class("container", "bg-black")
 
-    XCTAssertEqual(sut.render(), "<div class=\"bg-black container\"><p class=\"text-bold\">Hello World</p></div>")
+    XCTAssertEqual(renderer.render(sut), "<div class=\"bg-black container\"><p class=\"text-bold\">Hello World</p></div>")
   }
 
   // MARK: - Style Tests
@@ -37,7 +44,7 @@ final class AttributeTests: XCTestCase {
     }
     .margin(.pixel(8))
 
-    XCTAssertEqual(sut.render(), "<p class=\"margin-8px\">Hello World</p>")
+    XCTAssertEqual(renderer.render(sut), "<p class=\"margin-8px\">Hello World</p>")
   }
 
   func testComponentWithMixedModifiers() {
@@ -50,7 +57,7 @@ final class AttributeTests: XCTestCase {
     .class("container")
     .margin(.pixel(8))
 
-    XCTAssertEqual(sut.render(), "<div class=\"container margin-8px\"><p class=\"margin-4px\">Hello World</p></div>")
+    XCTAssertEqual(renderer.render(sut), "<div class=\"container margin-8px\"><p class=\"margin-4px\">Hello World</p></div>")
   }
 
   func testComponentWithMultipleStyleModifiers() {
@@ -63,6 +70,6 @@ final class AttributeTests: XCTestCase {
     .margin(.top, .pixel(8))
     .margin(.left, .pixel(4))
 
-    XCTAssertEqual(sut.render(), "<div class=\"margin-left-4px margin-top-8px\"><p class=\"margin-4px\">Hello World</p></div>")
+    XCTAssertEqual(renderer.render(sut), "<div class=\"margin-left-4px margin-top-8px\"><p class=\"margin-4px\">Hello World</p></div>")
   }
 }
