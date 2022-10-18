@@ -10,6 +10,8 @@ public struct HTMLRenderer {
 
   // MARK: - Init
 
+  /// Creates an instance of the HTML renderer.
+  /// - Parameter indentation: The indentation to apply to the document. Default to a default instance of `Indentation`.
   public init(indentation: Indentation = Indentation()) {
     self.indentation = indentation
   }

@@ -21,6 +21,11 @@ public struct Indentation {
 
   // MARK: - Init
 
+  /// Creates an instance of `Indentation` by providing default behaviour.
+  /// - Parameters:
+  ///   - kind: The kind of indentation. Defaults to `tab(1)` which indents code using one tab.
+  ///   - level: The level of indentation.
+  ///   - allowsNewlines: A `Bool` that indicates whether newline characters should be allowed in the document.
   public init(kind: Kind = .tabs(1), level: Int = .zero, allowsNewlines: Bool = true) {
     self.kind = kind
     self.level = level
