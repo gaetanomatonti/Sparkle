@@ -7,8 +7,8 @@ public struct Rule {
 
   /// The possible selectors that select HTML elements to style.
   public enum Selector: Hashable {
-    /// Selects the element based on the class.
-    case `class`(_ name: String)
+    /// Selects all the elements.
+    case universal
 
     /// Selects the element based on the element name.
     case element(_ name: String)
@@ -16,8 +16,25 @@ public struct Rule {
     /// Selects the element based on the identifier.
     case identifier(_ name: String)
 
-    /// Selects all the elements.
-    case universal
+    /// Selects the element based on the class.
+    case `class`(_ name: String)
+
+    /// The priority used to sort the selectors.
+    var priority: Int {
+      switch self {
+        case .universal:
+          return 0
+
+        case .element:
+          return 1
+
+        case .identifier:
+          return 2
+
+        case .class:
+          return 3
+      }
+    }
   }
 
   // MARK: - Stored Properties
@@ -48,4 +65,20 @@ extension Rule: Hashable {
   }
 }
 
-extension Rule.Selector: Comparable {}
+extension Rule.Selector: Comparable {
+  public static func <(lhs: Self, rhs: Self) -> Bool {
+    switch (lhs, rhs) {
+      case let (.element(lhsValue), .element(rhsValue)):
+        return lhsValue < rhsValue
+
+      case let (.identifier(lhsValue), .identifier(rhsValue)):
+        return lhsValue < rhsValue
+
+      case let (.class(lhsValue), .class(rhsValue)):
+        return lhsValue < rhsValue
+
+      default:
+        return lhs.priority < rhs.priority
+    }
+  }
+}
