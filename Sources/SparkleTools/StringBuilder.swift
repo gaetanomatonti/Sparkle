@@ -9,6 +9,14 @@ public struct StringBuilder {
     components.joined()
   }
 
+  public static func buildEither(first component: String) -> String {
+    component
+  }
+
+  public static func buildEither(second component: String) -> String {
+    component
+  }
+
   public static func buildOptional(_ component: String?) -> String {
     component ?? ""
   }

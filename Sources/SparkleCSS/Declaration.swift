@@ -35,11 +35,3 @@ public struct Declaration {
 // MARK: - Equatable
 
 extension Declaration: Equatable {}
-
-// MARK: - String Representable
-
-extension Declaration: Renderable {
-  public func render() -> String {
-    "\(property): \(value);"
-  }
-}

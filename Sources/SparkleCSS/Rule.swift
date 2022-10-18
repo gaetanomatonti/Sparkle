@@ -48,30 +48,4 @@ extension Rule: Hashable {
   }
 }
 
-// MARK: - String Representable
-
-extension Rule: Renderable {
-  public func render() -> String {
-    """
-    \(selector.render()) { \(declarations.render()) }
-    """
-  }
-}
-
-extension Rule.Selector: Renderable {
-  public func render() -> String {
-    switch self {
-      case let .class(name):
-        return ".\(name)"
-
-      case let .identifier(name):
-        return "#\(name)"
-
-      case let .element(name):
-        return name
-
-      case .universal:
-        return "*"
-    }
-  }
-}
+extension Rule.Selector: Comparable {}
