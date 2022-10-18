@@ -1,6 +1,20 @@
 /// A type representing the state of the indentation.
 public struct Indentation {
 
+  // MARK: - Structured Data
+
+  /// The available kinds of indentation.
+  public enum Kind {
+    /// Code should not be indented.
+    case none
+
+    /// Code should be intended with the specified amount of tabs.
+    case tabs(_ value: Int)
+
+    /// Code should be intended with the specified amount of spaces.
+    case spaces(_ value: Int)
+  }
+
   // MARK: - Stored Properties
 
   /// Whether newlines are allowed in the document.
@@ -43,20 +57,6 @@ public struct Indentation {
 extension Indentation: CustomStringConvertible {
   public var description: String {
     String(repeating: kind.description, count: level)
-  }
-}
-
-extension Indentation {
-  /// The available kinds of indentation.
-  public enum Kind {
-    /// Code should not be indented.
-    case none
-
-    /// Code should be intended with the specified amount of tabs.
-    case tabs(_ value: Int)
-
-    /// Code should be intended with the specified amount of spaces.
-    case spaces(_ value: Int)
   }
 }
 

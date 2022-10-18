@@ -1,4 +1,7 @@
 public struct Tag {
+
+  // MARK: - Structured Data
+
   /// The possible closing modes of an HTML element.
   public enum Kind {
     /// An opening and closing tag are used to wrap content.
@@ -10,6 +13,8 @@ public struct Tag {
     case selfClosing
   }
 
+  // MARK: - Stored Properites
+
   /// The name of the tag.
   let name: String
 
@@ -18,6 +23,8 @@ public struct Tag {
 
   /// The attributes of the element.
   let attributes: Set<Attribute>
+
+  // MARK: - Init
 
   public init(name: String, kind: Kind, attributes: Set<Attribute> = []) {
     self.name = name
