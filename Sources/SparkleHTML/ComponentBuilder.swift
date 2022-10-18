@@ -21,9 +21,3 @@ public struct ComponentBuilder {
     component
   }
 }
-
-struct EmptyComponent: Component {
-  var body: Component {
-    fatalError()
-  }
-}
