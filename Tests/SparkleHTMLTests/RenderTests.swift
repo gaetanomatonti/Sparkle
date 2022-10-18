@@ -5,14 +5,14 @@ import SparkleTools
 
 final class RenderTests: XCTestCase {
 
-  var renderer: HTMLRenderer!
+  var renderer: HTMLRenderer.ComponentRenderer!
 
   var styleSheetRenderer: StyleSheetRenderer {
     EnvironmentValues.styleSheetRenderer
   }
 
   override func setUp() {
-    renderer = HTMLRenderer(indentation: Indentation(kind: .none, allowsNewlines: false))
+    renderer = HTMLRenderer.ComponentRenderer(indentation: Indentation(kind: .none, allowsNewlines: false))
     EnvironmentValues.styleSheetRenderer = StyleSheetRenderer(indentation: Indentation(kind: .spaces(2), allowsNewlines: true))
   }
 

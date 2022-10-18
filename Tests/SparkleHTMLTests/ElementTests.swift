@@ -3,10 +3,10 @@ import SparkleTools
 @testable import SparkleHTML
 
 final class ElementTests: XCTestCase {
-  var renderer: HTMLRenderer!
+  var renderer: HTMLRenderer.ElementRenderer!
 
   override func setUp() {
-    renderer = HTMLRenderer(indentation: Indentation(kind: .none, allowsNewlines: false))
+    renderer = HTMLRenderer.ElementRenderer(indentation: Indentation(kind: .none, allowsNewlines: false))
   }
 
   func testEmptyElement() {

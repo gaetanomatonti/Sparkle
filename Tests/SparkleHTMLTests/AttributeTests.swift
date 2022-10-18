@@ -3,10 +3,10 @@ import SparkleTools
 @testable import SparkleHTML
 
 final class AttributeTests: XCTestCase {
-  var renderer: HTMLRenderer!
+  var renderer: HTMLRenderer.ComponentRenderer!
 
   override func setUp() {
-    renderer = HTMLRenderer(indentation: Indentation(kind: .none, allowsNewlines: false))
+    renderer = HTMLRenderer.ComponentRenderer(indentation: Indentation(kind: .none, allowsNewlines: false))
   }
 
   func testValuelessAttribute() {
