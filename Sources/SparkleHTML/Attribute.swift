@@ -61,22 +61,6 @@ extension Attribute: Hashable {
   }
 }
 
-// MARK: - Renderable
-
-extension Attribute: Renderable {
-  public func render() -> String {
-    guard !values.isEmpty else {
-      return name
-    }
-
-    let joinedValues = values
-      .sorted()
-      .joined(separator: " ")
-
-    return "\(name)=\"\(joinedValues)\""
-  }
-}
-
 extension Attribute: Comparable {
   public static func <(lhs: Attribute, rhs: Attribute) -> Bool {
     lhs.name < rhs.name

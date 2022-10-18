@@ -35,3 +35,12 @@ public struct Declaration {
 // MARK: - Equatable
 
 extension Declaration: Equatable {}
+
+extension Collection where Element: Renderable {
+  public func render() -> String {
+    map {
+      $0.render()
+    }
+    .joined(separator: " ")
+  }
+}

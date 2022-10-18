@@ -16,7 +16,8 @@ extension HTMLRenderer {
 
       if !tag.attributes.isEmpty {
         " "
-        tag.attributes.sorted().render()
+
+        AttributeRenderer().render(tag.attributes)
       }
 
       ">"
