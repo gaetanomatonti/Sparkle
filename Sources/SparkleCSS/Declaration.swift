@@ -36,10 +36,11 @@ public struct Declaration {
 
 extension Declaration: Equatable {}
 
-// MARK: - String Representable
-
-extension Declaration: Renderable {
+extension Collection where Element: Renderable {
   public func render() -> String {
-    "\(property): \(value);"
+    map {
+      $0.render()
+    }
+    .joined(separator: " ")
   }
 }

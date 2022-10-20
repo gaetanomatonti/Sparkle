@@ -33,13 +33,20 @@ public extension Site {
 }
 
 extension Site {
+  /// Configures the CSS stylesheet renderer.
+  /// - Parameter configure: A closure that allows to configure the main `StyleSheetRenderer` instance.
+  public func configureStyleSheet(_ configure: (StyleSheetRenderer) -> Void) {
+    configure(EnvironmentValues.styleSheetRenderer)
+  }
+
   /// Generates the site at the default `Output` directory of the package.
   public func generate(_ file: StaticString = #file) throws {
     let filePath = URL(fileURLWithPath: file.description)
     let packagePath = FileManager.default.packagePath(from: filePath)
     let outputPath = packagePath.appendingPathComponent("Output")
 
-    let htmlGenerator = Generator(content: homepage.render())
+    let renderer = HTMLRenderer()
+    let htmlGenerator = Generator(content: renderer.render(homepage))
     try htmlGenerator.write(file: "index", with: "html", to: outputPath)
 
     let cssGenerator = Generator(content: EnvironmentValues.styleSheetRenderer.render())

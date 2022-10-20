@@ -9,15 +9,14 @@ public struct Group: Component {
   // MARK: - Body
 
   public var body: Component {
-    fatalError("This body should not be accessed.")
-  }
-
-  // MARK: - Functions
-
-  public func render() -> String {
-    components.map {
-      $0.render()
-    }
-    .joined()
+    EmptyComponent()
   }
 }
+
+/// A componenty with empty body.
+struct EmptyComponent: Component {
+  var body: Component {
+    fatalError("This body should not be accessed.")
+  }
+}
+ 

@@ -5,7 +5,19 @@ public struct ComponentBuilder {
     component
   }
 
-  public static func buildBlock(_ components: Component...) -> Group {
-    Group(components: components)
+  public static func buildBlock(_ components: Component...) -> Component {
+    if components.isEmpty {
+      return EmptyComponent()
+    } else {
+      return Group(components: components)
+    }
+  }
+
+  public static func buildEither(first component: Component) -> Component {
+    component
+  }
+
+  public static func buildEither(second component: Component) -> Component {
+    component
   }
 }

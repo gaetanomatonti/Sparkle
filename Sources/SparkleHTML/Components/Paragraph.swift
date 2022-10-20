@@ -1,8 +1,10 @@
-/// A component that displays a `<p>` element.
-public struct Paragraph: Component {
+/// A component that renders a `<p>` element.
+public struct Paragraph: AttributedComponent {
 
   // MARK: - Stored Properties
 
+  var attributes: Set<Attribute>
+  
   /// The content of the component.
   let content: Component
 
@@ -11,19 +13,23 @@ public struct Paragraph: Component {
   /// Creates the component with a `String` content.
   /// - Parameter content: The `String` to render inside the component.
   public init(_ content: String) {
-    self.content = Text(content)
+    self.attributes = []
+    self.content = RawText(content)
   }
 
   /// Creates the component and its content from the builder closure.
-  /// - Parameter content: The closure that constructs the content.
-  public init(@ComponentBuilder content: () -> Component) {
+  /// - Parameters:
+  ///   - attributes: The attributes to add to the underlying element.
+  ///   - content: The closure that constructs the content.
+  public init(_ attributes: Attribute..., @ComponentBuilder content: () -> Component) {
+    self.attributes = Set(attributes)
     self.content = content()
   }
 
   // MARK: - Body
 
   public var body: Component {
-    Element(name: "p") {
+    Element(tag: Tag(name: "p", kind: .standard, attributes: attributes)) {
       content
     }
   }

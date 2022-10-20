@@ -13,6 +13,13 @@ public struct Attribute {
 
   // MARK: - Init
 
+  /// Creates a valueless HTML attribute.
+  /// - Parameter name: The name of the attribute.
+  init(_ name: String) {
+    self.name = name
+    self.values = []
+  }
+
   /// Creates a new HTML attribute.
   /// - Parameters:
   ///   - name: The name of the attribute.
@@ -54,14 +61,8 @@ extension Attribute: Hashable {
   }
 }
 
-// MARK: - Renderable
-
-extension Attribute: Renderable {
-  public func render() -> String {
-    let joinedValues = values
-      .sorted()
-      .joined(separator: " ")
-
-    return "\(name)=\"\(joinedValues)\""
+extension Attribute: Comparable {
+  public static func <(lhs: Attribute, rhs: Attribute) -> Bool {
+    lhs.name < rhs.name
   }
 }
