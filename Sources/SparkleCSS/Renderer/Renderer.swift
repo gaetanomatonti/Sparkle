@@ -10,7 +10,10 @@ public final class StyleSheetRenderer {
   let indentation: Indentation
 
   /// The set of `@import` statements.
-  var imports: Set<Import>
+  var imports: Set<Source>
+
+  /// The font faces to apply to the stylesheet.
+  var fontFaces: Set<Font.Face>
 
   /// The set of rules that should be rendered.
   var rules: Set<Rule>
@@ -18,23 +21,38 @@ public final class StyleSheetRenderer {
   // MARK: - Init
 
   /// Creates a new instance of `Render` by specifying a set of rules to render.
-  /// - Parameter rules: The set of rules that should be rendered.
-  public init(indentation: Indentation = Indentation(), imports: Set<Import> = [], rules: Set<Rule> = []) {
+  /// - Parameters:
+  ///   - indentation: The indentation to apply to the document.
+  ///   - fontFaces: The font faces to apply to the stylesheet.
+  ///   - rules: The set of rules that should be rendered.
+  public init(
+    indentation: Indentation = Indentation(),
+    imports: Set<Source> = [],
+    fontFaces: Set<Font.Face> = [],
+    rules: Set<Rule> = []
+  ) {
     self.indentation = indentation
     self.imports = imports
+    self.fontFaces = fontFaces
     self.rules = rules
   }
 
   // MARK: - Functions
 
   /// Inserts an import statement in the set of imports.
-  /// - Parameter statement: The import statement to be added to the set of imports.
-  public func `import`(_ statement: Import) {
-    imports.insert(statement)
+  /// - Parameter source: The import statement to add to the set of imports.
+  public func `import`(_ source: Source) {
+    imports.insert(source)
+  }
+
+  /// Inserts a font face in the stylesheet.
+  /// - Parameter rule: The font face to add to the stylesheet.
+  public func insert(_ fontFace: Font.Face) {
+    fontFaces.insert(fontFace)
   }
 
   /// Inserts a rule in the set of rules to render.
-  /// - Parameter rule: The rule to be added to the set of rules.
+  /// - Parameter rule: The rule to add to the set of rules.
   public func insert(_ rule: Rule) {
     rules.insert(rule)
   }
@@ -42,8 +60,8 @@ public final class StyleSheetRenderer {
   /// Renders the rules in `String` format, sorted alphabetically.
   public func render() -> String {
     let imports = imports
-      .map { statement in
-        ImportRenderer(indentation: indentation).render(statement)
+      .map { source in
+        ImportRenderer(indentation: indentation).render(source)
       }
       .sorted()
       .joined()

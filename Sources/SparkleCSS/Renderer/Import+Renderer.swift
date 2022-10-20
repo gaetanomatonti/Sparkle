@@ -23,14 +23,8 @@ extension StyleSheetRenderer {
     /// - Parameter statement: The import statement to render.
     /// - Returns: The `String` representation of the import statement.
     @StringBuilder
-    func render(_ statement: Import) -> String {
-      switch statement {
-        case let .string(value):
-          "@import \"\(value)\";"
-
-        case let .url(value):
-          "@import url(\"\(value)\");"
-      }
+    func render(_ source: Source) -> String {
+      "@import " + source.render()
 
       if indentation.allowsNewlines {
         "\n"

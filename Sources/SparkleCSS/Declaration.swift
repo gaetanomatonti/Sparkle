@@ -1,7 +1,7 @@
 import SparkleTools
 
 /// A type representing a rule declaration.
-public struct Declaration {
+public struct Declaration: Hashable {
 
   // MARK: - Stored Properties
 

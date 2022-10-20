@@ -1,5 +1,5 @@
 /// The possible display behaviours of an element.
-public enum Display: String {
+public enum Display: String, Value {
   /// Displays the element as a block element.
   case block
 
@@ -11,10 +11,4 @@ public enum Display: String {
 
   /// Displays the element as a grid container.
   case grid
-}
-
-extension Display: Value {
-  public func render() -> String {
-    rawValue
-  }
 }
