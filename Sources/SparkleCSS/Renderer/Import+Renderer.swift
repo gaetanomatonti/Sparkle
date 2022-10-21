@@ -24,7 +24,7 @@ extension StyleSheetRenderer {
     /// - Returns: The `String` representation of the import statement.
     @StringBuilder
     func render(_ source: Source) -> String {
-      "@import " + source.render()
+      "@import " + source.render() + ";"
 
       if indentation.allowsNewlines {
         "\n"
