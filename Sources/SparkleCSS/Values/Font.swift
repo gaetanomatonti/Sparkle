@@ -8,7 +8,7 @@ public enum Font {
     /// The declarations that describe the font face.
     let declarations: [Declaration]
 
-    init(
+    public init(
       family: Font.Family,
       source: Source,
       stretch: Font.Stretch? = nil,
@@ -58,7 +58,7 @@ public enum Font {
           return "system-ui"
 
         case let .custom(name):
-          return "\(name)"
+          return "\"\(name)\""
       }
     }
   }

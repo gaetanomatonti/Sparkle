@@ -66,6 +66,12 @@ public final class StyleSheetRenderer {
       .sorted()
       .joined()
 
+    let fontFaces = fontFaces
+      .map { fontFace in
+        FontFaceRenderer(indentation: indentation).render(fontFace)
+      }
+      .joined()
+
     let rules = rules
       .filter { rule in
         !rule.declarations.isEmpty
@@ -80,6 +86,7 @@ public final class StyleSheetRenderer {
 
     return [
       imports,
+      fontFaces,
       rules
     ]
     .filter {

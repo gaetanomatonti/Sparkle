@@ -11,10 +11,10 @@ public enum Source: Hashable, Value {
   public func render() -> String {
     switch self {
       case let .string(value):
-        return "\"\(value)\";"
+        return "\"\(value)\""
 
       case let .url(value):
-        return "url(\"\(value)\");"
+        return "url(\"\(value)\")"
     }
   }
 }
