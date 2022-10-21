@@ -17,7 +17,7 @@ public enum Text {
   /// The enumeration for the supported text decorations.
   public enum Decoration: String, Value {
     /// The enumeration for the supported decoration styles.
-    enum Style: String, Value {
+    public enum Style: String, Value {
       /// A solid line.
       case solid
 
@@ -48,7 +48,7 @@ public enum Text {
   }
 
   /// The enumeration for all the text transformations.
-  enum Transform: String, Value {
+  public enum Transform: String, Value {
     /// Transforms all text into uppercase.
     case uppercase
 
@@ -60,5 +60,16 @@ public enum Text {
 
     /// Removes any transformation.
     case none
+
+    /// The name of the class.
+    var className: String {
+      switch self {
+        case .uppercase, .lowercase, .capitalize:
+          return rawValue
+
+        case .none:
+          return "normal-case"
+      }
+    }
   }
 }

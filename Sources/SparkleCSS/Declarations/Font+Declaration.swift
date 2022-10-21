@@ -1,6 +1,6 @@
 extension Declaration {
   /// Creates the declaration that sets the font family.
-  /// - Parameter family: The family of the font.
+  /// - Parameter families: The families of the font. CSS fallbacks to the next family in the list in case one of the fonts is missing.
   /// - Returns: The declaration that sets the font family.
   public static func fontFamily(_ families: Font.Family...) -> Declaration {
     Declaration(property: "font-family", value: Font.Families(families))
