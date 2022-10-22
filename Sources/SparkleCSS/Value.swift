@@ -8,3 +8,15 @@ public protocol ValueWithDefaultValue: Value, Equatable {
   /// The default value of the property.
   static var defaultValue: Self { get }
 }
+
+extension Value where Self: RawRepresentable, RawValue == String {
+  public func render() -> String {
+    rawValue
+  }
+}
+
+extension Value where Self: RawRepresentable, RawValue == Int {
+  public func render() -> String {
+    rawValue.description
+  }
+}

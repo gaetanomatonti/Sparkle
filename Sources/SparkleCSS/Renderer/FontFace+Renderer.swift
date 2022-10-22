@@ -1,8 +1,8 @@
 import SparkleTools
 
 extension StyleSheetRenderer {
-  /// An object that renders a CSS import statement.
-  struct ImportRenderer {
+  /// An object that renders a CSS font face rule.
+  struct FontFaceRenderer {
 
     // MARK: - Stored Properties
 
@@ -19,16 +19,24 @@ extension StyleSheetRenderer {
 
     // MARK: - Functions
 
-    /// Renders the specified import statement into a `String`.
-    /// - Parameter statement: The import statement to render.
-    /// - Returns: The `String` representation of the import statement.
+    /// Renders the specified font face rule into a `String`.
+    /// - Parameter fontFace: The font face to render.
+    /// - Returns: The `String` representation of the font face rule.
     @StringBuilder
-    func render(_ source: Source) -> String {
-      "@import " + source.render() + ";"
+    func render(_ fontFace: Font.Face) -> String {
+      "@font-face {"
 
       if indentation.allowsNewlines {
         "\n"
       }
+
+      DeclarationRenderer(indentation: indentation.indent()).render(fontFace.declarations)
+
+      if indentation.allowsNewlines {
+        "\n"
+      }
+
+      "}"
     }
   }
 }

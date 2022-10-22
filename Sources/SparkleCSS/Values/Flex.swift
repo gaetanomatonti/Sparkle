@@ -38,10 +38,6 @@ extension Flex.Content {
     public static var defaultValue: Alignment {
       .normal
     }
-
-    public func render() -> String {
-      rawValue
-    }
   }
 
   /// The possible justifications for the content of the flex layout.
@@ -71,10 +67,6 @@ extension Flex.Content {
     public static var defaultValue: Justification {
       .flexStart
     }
-
-    public func render() -> String {
-      rawValue
-    }
   }
 }
 
@@ -96,10 +88,6 @@ extension Flex {
     /// The default value of the flex direction.
     public static var defaultValue: Flex.Direction {
       .row
-    }
-
-    public func render() -> String {
-      rawValue
     }
   }
 }
@@ -130,10 +118,6 @@ extension Flex.Item {
     /// The default value of the item alignment.
     public static var defaultValue: Alignment {
       .stretch
-    }
-
-    public func render() -> String {
-      rawValue
     }
   }
 }
