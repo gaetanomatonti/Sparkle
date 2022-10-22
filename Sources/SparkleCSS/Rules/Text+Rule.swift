@@ -4,7 +4,7 @@ extension Rule {
   /// - Returns: The rule that sets the alignment of the text.
   public static func textAlignment(_ alignment: Text.Alignment) -> Rule {
     Rule(
-      .class("text"),
+      .class("text-\(alignment.render())"),
       declarations: .textAlignment(alignment)
     )
   }
