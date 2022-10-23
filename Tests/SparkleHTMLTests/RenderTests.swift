@@ -55,4 +55,38 @@ final class RenderTests: XCTestCase {
       """
     )
   }
+
+  func testComponentWithColor() {
+    let sut = Paragraph {
+      Text("Hello World")
+    }
+    .foregroundColor(RGB(red: 0, green: 0, blue: 0))
+
+    XCTAssertEqual(renderer.render(sut), "<p class=\"color-r0-g0-b0-a100\">Hello World</p>")
+    XCTAssertEqual(
+      styleSheetRenderer.render(),
+      """
+      .color-r0-g0-b0-a100 {
+        color: rgba(0, 0, 0, 1.0);
+      }
+      """
+    )
+  }
+
+  func testComponentWithIdentifiedColor() {
+    let sut = Paragraph {
+      Text("Hello World")
+    }
+    .foregroundColor(SparklePalette.textPrimary)
+
+    XCTAssertEqual(renderer.render(sut), "<p class=\"color-spk-text-primary\">Hello World</p>")
+    XCTAssertEqual(
+      styleSheetRenderer.render(),
+      """
+      .color-spk-text-primary {
+        color: rgba(0, 0, 0, 1.0);
+      }
+      """
+    )
+  }
 }

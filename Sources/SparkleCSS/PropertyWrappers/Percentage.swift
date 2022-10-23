@@ -7,6 +7,11 @@ public struct Percentage {
     }
   }
 
+  /// The percentage expressed as an integer. Ranges between 0 and 100.
+  public var integerValue: Int {
+    Int(wrappedValue * 100)
+  }
+
   public init(wrappedValue: Double) {
     self.wrappedValue = max(0, min(1, wrappedValue))
   }

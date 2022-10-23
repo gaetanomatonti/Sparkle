@@ -13,6 +13,10 @@ public enum NamedColor: String, Color {
 
   case white
 
+  public var className: String {
+    render()
+  }
+
   public func render() -> String {
     rawValue
   }
