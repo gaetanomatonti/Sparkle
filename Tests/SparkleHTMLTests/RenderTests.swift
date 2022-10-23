@@ -108,7 +108,7 @@ final class RenderTests: XCTestCase {
     XCTAssertEqual(
       styleSheetRenderer.render(),
       """
-      .bg-linear-90deg-red-0%-blue-100% {
+      .bg-linear-90deg-red-0\\%-blue-100\\% {
         background: linear-gradient(90deg, rgba(255, 0, 0, 1.0) 0%, rgba(0, 0, 255, 1.0) 100%);
       }
       """
