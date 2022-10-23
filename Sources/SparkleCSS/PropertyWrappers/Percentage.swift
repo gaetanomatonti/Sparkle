@@ -12,6 +12,17 @@ public struct Percentage {
     Int(wrappedValue * 100)
   }
 
+  /// The `String` representation of the percentage.
+  ///
+  /// ```
+  /// "50%"
+  /// ```
+  public var stringRepresentation: String {
+    integerValue.description + "%"
+  }
+
+  // MARK: - Init
+
   public init(wrappedValue: Double) {
     self.wrappedValue = max(0, min(1, wrappedValue))
   }

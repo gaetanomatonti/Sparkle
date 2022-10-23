@@ -9,6 +9,15 @@ extension Rule {
     )
   }
 
+  /// Creates the rule that sets the text to a transparent color and clips the background.
+  /// - Returns: The rule that sets the text clip style.
+  public static func clipText() -> Rule {
+    Rule(
+      .class("text-clip"),
+      declarations: .backgroundClip(.text), .foregroundColor(NamedColor.transparent)
+    )
+  }
+
   /// Creates the rule that sets the line decoration of the text.
   /// - Parameter decoration: The line decoration of the text.
   /// - Returns: The rule that sets the line decoration of the text.

@@ -77,7 +77,7 @@ final class RenderTests: XCTestCase {
     let sut = Paragraph {
       Text("Hello World")
     }
-    .foregroundColor(SparklePalette.textPrimary)
+    .foregroundStyle(SparklePalette.textPrimary)
 
     XCTAssertEqual(renderer.render(sut), "<p class=\"color-spk-text-primary\">Hello World</p>")
     XCTAssertEqual(
@@ -85,6 +85,31 @@ final class RenderTests: XCTestCase {
       """
       .color-spk-text-primary {
         color: rgba(0, 0, 0, 1.0);
+      }
+      """
+    )
+  }
+
+  func testComponentWithGradient() {
+    let sut = Paragraph {
+      Text("Hello World")
+    }
+    .backgroundStyle(
+      .linearGradient(
+        angle: 90,
+        colors: [
+          .rgb(red: 255, green: 0, blue: 0).identifier("red"),
+          .rgb(red: 0, green: 0, blue: 255).identifier("blue")
+        ]
+      )
+    )
+
+    XCTAssertEqual(renderer.render(sut), "<p class=\"bg-linear-90deg-red-0%-blue-100%\">Hello World</p>")
+    XCTAssertEqual(
+      styleSheetRenderer.render(),
+      """
+      .bg-linear-90deg-red-0%-blue-100% {
+        background: linear-gradient(90deg, rgba(255, 0, 0, 1.0) 0%, rgba(0, 0, 255, 1.0) 100%);
       }
       """
     )
