@@ -65,10 +65,10 @@ extension Gradient {
 
     // MARK: - Init
 
-    /// <#Description#>
+    /// Creates a gradient stop.
     /// - Parameters:
-    ///   - color: <#color description#>
-    ///   - location: <#location description#>
+    ///   - color: The color of the stop.
+    ///   - location: The location of the color in the gradient, expressed in percentage.
     public init(color: Color, location: Double) {
       self.color = color
       self.location = location
