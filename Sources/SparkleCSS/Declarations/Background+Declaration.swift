@@ -19,4 +19,11 @@ extension Declaration {
   public static func backgroundColor(_ color: Color) -> Declaration {
     Declaration(property: "background-color", value: color)
   }
+
+  /// Creates the declaration that sets the background image.
+  /// - Parameter image: The image to apply to the background.
+  /// - Returns: The `Declaration` that sets the background image.
+  public static func backgroundImage(_ image: BackgroundImage) -> Declaration {
+    Declaration(property: "background-image", value: image)
+  }
 }

@@ -1,5 +1,5 @@
 /// A type that represents a gradient of colors along a straight line.
-public struct LinearGradient: ForegroundStyle, BackgroundStyle {
+public struct LinearGradient: ForegroundStyle, BackgroundStyle, BackgroundImage {
 
   // MARK: - Stored Properties
 

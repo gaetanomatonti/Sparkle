@@ -6,10 +6,10 @@ extension Rule {
     Rule(.class("bg-color-\(color.className)"), declarations: .backgroundColor(color))
   }
 
-  /// Creates the rule that sets the style of the background.
-  /// - Parameter style: The style to apply.
-  /// - Returns: A `Rule` that sets the style of the element.
-  public static func background(_ style: BackgroundStyle) -> Rule {
-    Rule(.class("bg-\(style.className)"), declarations: .background(style))
+  /// Creates the rule that sets the background image.
+  /// - Parameter image: The background image to apply.
+  /// - Returns: A `Rule` that sets the background image.
+  public static func backgroundImage(_ image: BackgroundImage) -> Rule {
+    Rule(.class("bg-image-\(image.className)"), declarations: .backgroundImage(image))
   }
 }

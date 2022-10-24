@@ -31,10 +31,25 @@ extension Component {
     rule(.backgroundColor(color))
   }
 
+  /// Sets the background image.
+  /// - Parameter image: The background image to apply.
+  /// - Returns: The component updated with the background image.
+  public func backgroundImage(_ image: BackgroundImage) -> Component {
+    rule(.backgroundImage(image))
+  }
+
   /// Sets the style of the background.
   /// - Parameter style: The style to apply to the background.
   /// - Returns: The component updated with the style.
   public func backgroundStyle(_ style: BackgroundStyle) -> Component {
-    rule(.background(style))
+    if let color = style as? Color {
+      return backgroundColor(color)
+    }
+
+    if let image = style as? BackgroundImage {
+      return backgroundImage(image)
+    }
+
+    return self
   }
 }

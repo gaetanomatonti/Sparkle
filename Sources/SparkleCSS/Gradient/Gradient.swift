@@ -1,5 +1,5 @@
 /// A type that represents a gradient of colors.
-public struct Gradient: ForegroundStyle, BackgroundStyle {
+public struct Gradient {
 
   // MARK: - Stored Properties
 
