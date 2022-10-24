@@ -104,12 +104,12 @@ final class RenderTests: XCTestCase {
       )
     )
 
-    XCTAssertEqual(renderer.render(sut), "<p class=\"bg-linear-90deg-red-0%-blue-100%\">Hello World</p>")
+    XCTAssertEqual(renderer.render(sut), "<p class=\"bg-image-linear-90deg-red-0%-blue-100%\">Hello World</p>")
     XCTAssertEqual(
       styleSheetRenderer.render(),
       """
-      .bg-linear-90deg-red-0\\%-blue-100\\% {
-        background: linear-gradient(90deg, rgba(255, 0, 0, 1.0) 0%, rgba(0, 0, 255, 1.0) 100%);
+      .bg-image-linear-90deg-red-0\\%-blue-100\\% {
+        background-image: linear-gradient(90deg, rgba(255, 0, 0, 1.0) 0%, rgba(0, 0, 255, 1.0) 100%);
       }
       """
     )
