@@ -2,7 +2,7 @@ workflows:
   test: 
     name: Test
     environment:
-      xcode: 14.0
+      xcode: 14.1
     triggering:
       events:
         - push
