@@ -11,3 +11,5 @@ public struct Byte {
     self.wrappedValue = max(0, min(255, wrappedValue))
   }
 }
+
+extension Byte: Equatable {}

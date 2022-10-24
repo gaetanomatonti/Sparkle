@@ -28,6 +28,8 @@ public struct Percentage {
   }
 }
 
+extension Percentage: Equatable {}
+
 postfix operator %
 extension Int {
   public postfix static func %(_ value: Int) -> Double {

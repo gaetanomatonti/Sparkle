@@ -1,4 +1,5 @@
 import XCTest
+import RegexBuilder
 @testable import SparkleCSS
 
 final class ColorTests: XCTestCase {
@@ -20,5 +21,11 @@ final class ColorTests: XCTestCase {
   func testHSLWithOverflowValue() {
     let sut = HSL(hue: 400, saturation: 100%, lightness: 100%)
     XCTAssertEqual(sut.render(), "hsla(360, 1.0, 1.0, 1.0)")
+  }
+
+  func testHexRegex() throws {
+    let sut = "#FFFFFF"
+
+    XCTAssertEqual(Hex(sut).value, "FFFFFF")
   }
 }

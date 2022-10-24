@@ -4,6 +4,15 @@ public protocol Color: ForegroundStyle, BackgroundStyle {
   var className: String { get }
 }
 
+extension Color where Self == Hex {
+  /// Creates the the color from a its hexadecimal value.
+  /// - Parameter value: The hexadecimal value of the color.
+  /// - Returns: The color created from its hexadeciaml value.
+  public static func hex(_ value: Hex) -> Hex {
+    value
+  }
+}
+
 extension Color where Self == HSL {
   /// Creates a color with HSL components.
   /// - Parameters:
@@ -20,7 +29,7 @@ extension Color where Self == HSL {
 extension Color where Self == NamedColor {
   /// Creates the the color from a name available in the CSS library.
   /// - Parameter color: The color in the CSS library.
-  /// - Returns: The color in the CSS library-
+  /// - Returns: The color in the CSS library.
   public static func color(_ color: NamedColor) -> NamedColor {
     color
   }

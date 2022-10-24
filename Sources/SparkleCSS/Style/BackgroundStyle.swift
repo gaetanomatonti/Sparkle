@@ -4,6 +4,15 @@ public protocol BackgroundStyle: Value {
   var className: String { get }
 }
 
+extension BackgroundStyle where Self == Hex {
+  /// Creates the the color from a its hexadecimal value.
+  /// - Parameter value: The hexadecimal value of the color.
+  /// - Returns: The color created from its hexadeciaml value.
+  public static func hex(_ value: Hex) -> Hex {
+    value
+  }
+}
+
 extension BackgroundStyle where Self == HSL {
   /// Creates a color with HSL components.
   /// - Parameters:

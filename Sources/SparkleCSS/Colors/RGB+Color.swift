@@ -36,3 +36,5 @@ public struct RGB: Color {
     "rgba(\(red), \(green), \(blue), \(alpha))"
   }
 }
+
+extension RGB: Equatable {}
