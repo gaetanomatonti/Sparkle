@@ -4,6 +4,28 @@ public protocol Color: ForegroundStyle, BackgroundStyle {
   var className: String { get }
 }
 
+extension Color where Self == HSL {
+  /// Creates a color with HSL components.
+  /// - Parameters:
+  ///   - hue: The hue of the color.
+  ///   - saturation: The saturation of the color.
+  ///   - lightness: The lightness of the color.
+  ///   - alpha: The alpha component of the color. Defaults to `1.0`.
+  /// - Returns: The color with `RGB` components.
+  public static func hsl(hue: Int, saturation: Double, lightness: Double, alpha: Double = 1.0) -> HSL {
+    HSL(hue: hue, saturation: saturation, lightness: lightness, alpha: alpha)
+  }
+}
+
+extension Color where Self == NamedColor {
+  /// Creates the the color from a name available in the CSS library.
+  /// - Parameter color: The color in the CSS library.
+  /// - Returns: The color in the CSS library-
+  public static func color(_ color: NamedColor) -> NamedColor {
+    color
+  }
+}
+
 extension Color where Self == RGB {
   /// Creates a color with RGB components.
   /// - Parameters:
@@ -14,14 +36,5 @@ extension Color where Self == RGB {
   /// - Returns: The color with `RGB` components.
   public static func rgb(red: Int, green: Int, blue: Int, alpha: Double = 1.0) -> RGB {
     RGB(red: red, green: green, blue: blue, alpha: alpha)
-  }
-}
-
-extension Color where Self == NamedColor {
-  /// Creates the the color from a name available in the CSS library.
-  /// - Parameter color: The color in the CSS library.
-  /// - Returns: The color in the CSS library-
-  public static func color(_ color: NamedColor) -> NamedColor {
-    color
   }
 }
