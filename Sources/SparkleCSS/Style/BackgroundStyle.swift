@@ -4,6 +4,7 @@ public protocol BackgroundStyle: Value {
   var className: String { get }
 }
 
+#if canImport(RegexBuilder)
 @available(macOS 13.0, *)
 extension BackgroundStyle where Self == Hex {
   /// Creates the the color from a its hexadecimal value.
@@ -13,6 +14,7 @@ extension BackgroundStyle where Self == Hex {
     value
   }
 }
+#endif
 
 extension BackgroundStyle where Self == HSL {
   /// Creates a color with HSL components.

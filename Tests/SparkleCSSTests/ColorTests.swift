@@ -28,8 +28,10 @@ final class ColorTests: XCTestCase {
       return
     }
 
+    #if canImport(RegexBuilder)
     let sut = "#FFFFFF"
 
     XCTAssertEqual(Hex(sut).value, "FFFFFF")
+    #endif
   }
 }

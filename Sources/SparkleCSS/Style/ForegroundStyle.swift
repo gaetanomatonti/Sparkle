@@ -4,6 +4,7 @@ public protocol ForegroundStyle: Value {
   var className: String { get }
 }
 
+#if canImport(RegexBuilder)
 @available(macOS 13.0, *)
 extension ForegroundStyle where Self == Hex {
   /// Creates the the color from a its hexadecimal value.
@@ -13,6 +14,7 @@ extension ForegroundStyle where Self == Hex {
     value
   }
 }
+#endif
 
 extension ForegroundStyle where Self == HSL {
   /// Creates a color with HSL components.
