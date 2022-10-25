@@ -1,3 +1,4 @@
+#if canImport(RegexBuilder)
 import RegexBuilder
 
 /// A color expressed in its hexadecimal value.
@@ -62,3 +63,4 @@ public struct Hex: ExpressibleByStringLiteral, Color, BackgroundStyle, Foregroun
     "#" + value
   }
 }
+#endif

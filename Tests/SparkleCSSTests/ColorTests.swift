@@ -1,5 +1,4 @@
 import XCTest
-import RegexBuilder
 @testable import SparkleCSS
 
 final class ColorTests: XCTestCase {
