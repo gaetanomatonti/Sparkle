@@ -45,10 +45,10 @@ extension StyleSheetRenderer {
     private func render(_ selector: Rule.Selector) -> String {
       switch selector {
         case let .class(name):
-          return ".\(name)"
+          return ".\(name.escapedForStyleSheet)"
 
         case let .identifier(name):
-          return "#\(name)"
+          return "#\(name.escapedForStyleSheet)"
 
         case let .element(name):
           return name
