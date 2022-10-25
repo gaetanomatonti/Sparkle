@@ -32,7 +32,7 @@ extension ForegroundStyle where Self == HSL {
 extension ForegroundStyle where Self == NamedColor {
   /// Creates the the color from a name available in the CSS library.
   /// - Parameter color: The color in the CSS library.
-  /// - Returns: The color in the CSS library-
+  /// - Returns: The color in the CSS library.
   public static func color(_ color: NamedColor) -> NamedColor {
     color
   }
