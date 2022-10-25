@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
   name: "Sparkle",
   platforms: [
-    .macOS(.v13)
+    .macOS(.v12)
   ],
   products: [
     .library(

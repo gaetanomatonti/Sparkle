@@ -4,6 +4,7 @@ public protocol ForegroundStyle: Value {
   var className: String { get }
 }
 
+@available(macOS 13.0, *)
 extension ForegroundStyle where Self == Hex {
   /// Creates the the color from a its hexadecimal value.
   /// - Parameter value: The hexadecimal value of the color.

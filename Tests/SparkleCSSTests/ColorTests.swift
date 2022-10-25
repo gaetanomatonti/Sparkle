@@ -24,6 +24,11 @@ final class ColorTests: XCTestCase {
   }
 
   func testHexRegex() throws {
+    guard #available(macOS 13.0, *) else {
+      XCTAssertTrue(true)
+      return
+    }
+
     let sut = "#FFFFFF"
 
     XCTAssertEqual(Hex(sut).value, "FFFFFF")

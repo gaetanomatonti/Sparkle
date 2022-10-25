@@ -4,6 +4,7 @@ public protocol BackgroundStyle: Value {
   var className: String { get }
 }
 
+@available(macOS 13.0, *)
 extension BackgroundStyle where Self == Hex {
   /// Creates the the color from a its hexadecimal value.
   /// - Parameter value: The hexadecimal value of the color.

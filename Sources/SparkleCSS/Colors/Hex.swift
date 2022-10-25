@@ -1,6 +1,7 @@
 import RegexBuilder
 
 /// A color expressed in its hexadecimal value.
+@available(macOS 13.0, *)
 public struct Hex: ExpressibleByStringLiteral, Color, BackgroundStyle, ForegroundStyle {
 
   /// The value of the color.
