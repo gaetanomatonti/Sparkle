@@ -1,7 +1,7 @@
 import Foundation
 
 /// An object that generates a file from the given `String` content.
-struct Generator {
+public struct Generator {
 
   // MARK: - Stored Properties
 
@@ -12,7 +12,7 @@ struct Generator {
 
   /// Creates an instance of `Generator`.
   /// - Parameter content: The `String` to write to file.
-  init(content: String) {
+  public init(content: String) {
     self.content = content
   }
 
@@ -23,7 +23,7 @@ struct Generator {
   ///   - name: The name of the file.
   ///   - pathExtension: The extension of the file.
   ///   - path: The path in which to save the file.
-  func write(file name: String, with pathExtension: String, to path: URL) throws {
+  public func write(file name: String, with pathExtension: String, to path: URL) throws {
     guard path.isFileURL else {
       throw Error.invalidFileURL
     }
