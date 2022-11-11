@@ -30,12 +30,8 @@ extension Rule {
         )
 
       default:
-        let className = edge.edges
-          .map(\.rawValue)
-          .joined(separator: "-")
-
         return Rule(
-          .class("padding-\(className)-\(value.render())"),
+          .class("padding-\(edge.name)-\(value.render())"),
           declarations: declarations
         )
     }

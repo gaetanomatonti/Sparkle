@@ -50,7 +50,7 @@ public struct Rule {
   /// Creates a new rule by specifying the name of the CSS class and a declaration.
   /// - Parameters:
   ///   - name: The name of the CSS class.
-  ///   - declarations: The list of CSS declarations that set a styles.
+  ///   - declarations: The list of CSS declarations that set a style.
   public init(_ selector: Selector, declarations: Declaration...) {
     self.selector = selector
     self.declarations = declarations
@@ -59,7 +59,7 @@ public struct Rule {
   /// Creates a new rule by specifying the name of the CSS class and a declaration.
   /// - Parameters:
   ///   - name: The name of the CSS class.
-  ///   - declarations: The list of CSS declarations that set a styles.
+  ///   - declarations: The list of CSS declarations that set a style.
   public init(_ selector: Selector, declarations: [Declaration]) {
     self.selector = selector
     self.declarations = declarations
