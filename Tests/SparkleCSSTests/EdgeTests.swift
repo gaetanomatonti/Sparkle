@@ -1,10 +1,3 @@
-//
-//  EdgeTests.swift
-//  
-//
-//  Created by Gaetano Matonti on 11/11/22.
-//
-
 import XCTest
 @testable import SparkleCSS
 
