@@ -50,3 +50,24 @@ extension Unit: Value {
     }
   }
 }
+
+extension Unit: Equatable {
+  public static func ==(lhs: Unit, rhs: Unit) -> Bool {
+    switch (lhs, rhs) {
+      case (.zero, .zero), (.auto, .auto):
+        return true
+
+      case let (.pixel(lhsValue), .pixel(rhsValue)):
+        return lhsValue == rhsValue
+
+      case let (.em(lhsValue), .em(rhsValue)),
+        let (.rem(lhsValue), .rem(rhsValue)),
+        let (.vh(lhsValue), .vh(rhsValue)),
+        let (.vw(lhsValue), .vw(rhsValue)):
+        return lhsValue == rhsValue
+
+      case (.zero, _), (.auto, _), (.pixel, _), (.em, _), (.rem, _), (.vh, _), (.vw, _):
+        return false
+    }
+  }
+}
