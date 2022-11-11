@@ -30,12 +30,8 @@ extension Rule {
         )
 
       default:
-        let className = edge.edges
-          .map(\.rawValue)
-          .joined(separator: "-")
-
         return Rule(
-          .class("margin-\(className)-\(value.render())"),
+          .class("margin-\(edge.name)-\(value.render())"),
           declarations: declarations
         )
     }

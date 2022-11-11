@@ -64,7 +64,9 @@ extension Edge {
           return ""
 
         default:
-          return ""
+          return edges
+            .map(\.rawValue)
+            .joined(separator: "-")
       }
     }
 
