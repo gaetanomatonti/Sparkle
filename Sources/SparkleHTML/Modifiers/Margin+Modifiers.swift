@@ -13,7 +13,7 @@ extension Component {
   ///   - edge: The edge on which to apply the margin.
   ///   - value: The value of the margin.
   /// - Returns: The component updated with the newly generated margin class.
-  public func margin(_ edge: Edge, _ value: Unit) -> Component {
+  public func margin(_ edge: Edge.Set = .all, _ value: Unit) -> Component {
     rule(.margin(edge, value))
   }
 }
