@@ -14,30 +14,16 @@ extension Rule {
   ///   - width: The width of the border.
   ///   - style: The style of the border.
   ///   - color: The color of the border.
-  /// - Returns: A `Rule` that applied a border to the element.
+  /// - Returns: A `Rule` that applies a border to the element.
   public static func border(
-    width: Border.Width = .defaultValue,
-    style: Border.Style = .defaultValue,
+    width: Border.Width,
+    style: Border.Style,
     color: Color
   ) -> Rule {
-    var declarations: [Declaration] = []
-
-    if width != Border.Width.defaultValue {
-      declarations.append(.borderWidth(width))
-    }
-
-    if style != Border.Style.defaultValue {
-      declarations.append(.borderStyle(style))
-    }
-
-    declarations.append(.borderColor(color))
-
-    let className = declarations
-      .map { declaration in
-        "\(declaration.property)-\(declaration.value)"
-      }
-      .joined(separator: "-")
-
-    return Rule(.class(className), declarations: declarations)
+    let border = Border(width: width, style: style, color: color)
+    return Rule(
+      .class(border.className),
+      declarations: .border(border)
+    )
   }
 }

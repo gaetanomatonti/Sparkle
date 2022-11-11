@@ -12,6 +12,13 @@ public struct Border: Value {
   /// The color of the border.
   let color: Color
 
+  // MARK: - Computed Properties
+
+  /// The name of the class that applies the border.
+  var className: String {
+    "border-\(width.render())-\(style.render())-\(color.className)"
+  }
+
   // MARK: - Init
 
   /// Creates an instance of `Border`.
