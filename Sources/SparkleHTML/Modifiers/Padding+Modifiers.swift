@@ -13,7 +13,7 @@ extension Component {
   ///   - edge: The edge on which to apply the padding.
   ///   - value: The value of the padding.
   /// - Returns: The component updated with the newly generated padding class.
-  public func padding(_ edge: Edge, _ value: Unit) -> Component {
+  public func padding(_ edge: Edge.Set = .all, _ value: Unit) -> Component {
     rule(.padding(edge, value))
   }
 }
