@@ -22,7 +22,7 @@ extension Rule {
   ) -> Rule {
     let border = Border(width: width, style: style, color: color)
     return Rule(
-      .class(border.className),
+      .class("border-\(border.className)"),
       declarations: .border(border)
     )
   }
@@ -40,7 +40,7 @@ extension Rule {
   ) -> Rule {
     let border = Border(width: width, style: style, color: color)
     return Rule(
-      .class(border.className),
+      .class("border-top-\(border.className)"),
       declarations: .borderTop(border)
     )
   }
@@ -58,7 +58,7 @@ extension Rule {
   ) -> Rule {
     let border = Border(width: width, style: style, color: color)
     return Rule(
-      .class(border.className),
+      .class("border-left-\(border.className)"),
       declarations: .borderLeft(border)
     )
   }
@@ -76,7 +76,7 @@ extension Rule {
   ) -> Rule {
     let border = Border(width: width, style: style, color: color)
     return Rule(
-      .class(border.className),
+      .class("border-right-\(border.className)"),
       declarations: .borderRight(border)
     )
   }
@@ -94,7 +94,7 @@ extension Rule {
   ) -> Rule {
     let border = Border(width: width, style: style, color: color)
     return Rule(
-      .class(border.className),
+      .class("border-bottom-\(border.className)"),
       declarations: .borderBottom(border)
     )
   }
