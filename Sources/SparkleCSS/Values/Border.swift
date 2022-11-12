@@ -16,7 +16,7 @@ public struct Border: Value {
 
   /// The name of the class that applies the border.
   var className: String {
-    "border-\(width.render())-\(style.render())-\(color.className)"
+    "\(width.render())-\(style.render())-\(color.className)"
   }
 
   // MARK: - Init
