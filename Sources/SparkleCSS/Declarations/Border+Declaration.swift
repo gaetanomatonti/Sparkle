@@ -13,6 +13,34 @@ extension Declaration {
     Declaration(property: "border", value: border)
   }
 
+  /// Creates the declaration that applies a border to the top edge of the element.
+  /// - Parameter border: The `Border` to apply to the element.
+  /// - Returns: A `Declaration` that applies a border to the element.
+  public static func borderTop(_ border: Border) -> Declaration {
+    Declaration(property: "border-top", value: border)
+  }
+
+  /// Creates the declaration that applies a border to the left edge of the element.
+  /// - Parameter border: The `Border` to apply to the element.
+  /// - Returns: A `Declaration` that applies a border to the element.
+  public static func borderLeft(_ border: Border) -> Declaration {
+    Declaration(property: "border-left", value: border)
+  }
+
+  /// Creates the declaration that applies a border to the right edge of the element.
+  /// - Parameter border: The `Border` to apply to the element.
+  /// - Returns: A `Declaration` that applies a border to the element.
+  public static func borderRight(_ border: Border) -> Declaration {
+    Declaration(property: "border-right", value: border)
+  }
+
+  /// Creates the declaration that applies a border to the bottom edge of the element.
+  /// - Parameter border: The `Border` to apply to the element.
+  /// - Returns: A `Declaration` that applies a border to the element.
+  public static func borderBottom(_ border: Border) -> Declaration {
+    Declaration(property: "border-bottom", value: border)
+  }
+
   /// Creates the declaration that sets the border width of the element.
   /// - Parameter width: The width of the border.
   /// - Returns: A `Declaration` that sets the border width of the element.
