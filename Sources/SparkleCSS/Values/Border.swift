@@ -1,5 +1,5 @@
 /// A type that represents a border.
-public struct Border: Value {
+public struct Border<Width>: Value where Width: MeasurementValue {
 
   // MARK: - Stored Properties
 
@@ -15,7 +15,7 @@ public struct Border: Value {
   // MARK: - Computed Properties
 
   /// The name of the class that applies the border.
-  var className: String {
+  public var className: String {
     "\(width.render())-\(style.render())-\(color.className)"
   }
 
@@ -28,17 +28,6 @@ public struct Border: Value {
   ///   - color: The color of the border.
   public init(width: Width, style: Style, color: Color) {
     self.width = width
-    self.style = style
-    self.color = color
-  }
-
-  /// Creates an instance of `Border`.
-  /// - Parameters:
-  ///   - width: The width of the border expressed in `Unit`.
-  ///   - style: The style of the border.
-  ///   - color: The color of the border.
-  public init(width: Unit, style: Style, color: Color) {
-    self.width = .unit(width)
     self.style = style
     self.color = color
   }
@@ -86,58 +75,12 @@ extension Border {
     /// An outset border.
     case outset
 
+    public var className: String {
+      render()
+    }
+
     public static var defaultValue: Style {
       .none
-    }
-  }
-
-  /// An enumeration of the possible `Border` widths.
-  public enum Width: ValueWithDefaultValue {
-    /// A thin border.
-    case thin
-
-    /// A medium border.
-    case medium
-
-    /// A thick border.
-    case thick
-
-    /// A custom border width expressed with `Unit`.
-    case unit(Unit)
-
-    public static var defaultValue: Width {
-      .medium
-    }
-
-    public func render() -> String {
-      switch self {
-        case .thin:
-          return "thin"
-
-        case .medium:
-          return "medium"
-
-        case .thick:
-          return "thick"
-
-        case let .unit(value):
-          return value.render()
-      }
-    }
-  }
-}
-
-extension Border.Width: Equatable {
-  public static func ==(lhs: Border.Width, rhs: Border.Width) -> Bool {
-    switch (lhs, rhs) {
-      case (.thin, .thin), (.medium, .medium), (.thick, .thick):
-        return true
-
-      case let (.unit(lhsValue), .unit(rhsValue)):
-        return lhsValue == rhsValue
-
-      case (.thin, _), (.medium, _), (.thick, _), (.unit, _):
-        return false
     }
   }
 }

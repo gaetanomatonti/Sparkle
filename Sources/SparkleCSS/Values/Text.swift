@@ -12,6 +12,10 @@ public enum Text {
 
     /// Justifies the text so that each line has equal width.
     case justify
+
+    public var className: String {
+      render()
+    }
   }
 
   /// The enumeration for the supported text decorations.
@@ -32,6 +36,10 @@ public enum Text {
 
       /// A wavy line.
       case wavy
+
+      public var className: String {
+        render()
+      }
     }
 
     /// Places a line under the text.
@@ -45,6 +53,10 @@ public enum Text {
 
     /// Removes any decoration.
     case none
+
+    public var className: String {
+      render()
+    }
   }
 
   /// The enumeration for all the text transformations.
@@ -62,7 +74,7 @@ public enum Text {
     case none
 
     /// The name of the class.
-    var className: String {
+    public var className: String {
       switch self {
         case .uppercase, .lowercase, .capitalize:
           return rawValue

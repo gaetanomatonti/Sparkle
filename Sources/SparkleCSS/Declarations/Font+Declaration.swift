@@ -9,7 +9,7 @@ extension Declaration {
   /// Creates the declaration that sets the font size.
   /// - Parameter value: The size of the font.
   /// - Returns: The declaration that sets the font size.
-  public static func fontSize(_ size: Unit) -> Declaration {
+  public static func fontSize<V>(_ size: V) -> Declaration where V: MeasurementValue {
     Declaration(property: "font-size", value: size)
   }
 
@@ -37,7 +37,7 @@ extension Declaration {
   /// Creates the declaration that sets the line height.
   /// - Parameter value: The value of the line height.
   /// - Returns: The declaration that sets the line height.
-  public static func lineHeight(_ value: Unit) -> Declaration {
+  public static func lineHeight<V>(_ value: V) -> Declaration where V: MeasurementValue {
     Declaration(property: "line-height", value: value)
   }
 }

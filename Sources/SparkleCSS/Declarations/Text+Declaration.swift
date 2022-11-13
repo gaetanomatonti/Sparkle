@@ -23,7 +23,7 @@ extension Declaration {
   /// Creates the declaration that sets the thickness of the line decoration of the text.
   /// - Parameter value: The thickness of the line decoration of the text.
   /// - Returns: The declaration that sets the thickness of the line decoration of the text.
-  public static func textDecorationThickness(_ value: Unit) -> Declaration {
+  public static func textDecorationThickness<V>(_ value: V) -> Declaration where V: MeasurementValue {
     Declaration(property: "text-decoration-thickness", value: value)
   }
 
@@ -37,7 +37,7 @@ extension Declaration {
   /// Creates the declaration that sets the offset of the text underline.
   /// - Parameter value: The offset of the text underline.
   /// - Returns: The declaration that sets the offset of the text underline.
-  public static func textUnderlineOffset(_ value: Unit) -> Declaration {
+  public static func textUnderlineOffset<V>(_ value: V) -> Declaration where V: MeasurementValue {
     Declaration(property: "text-underline-offset", value: value)
   }
 }

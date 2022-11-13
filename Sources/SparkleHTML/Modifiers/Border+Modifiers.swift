@@ -4,7 +4,7 @@ extension Component {
   /// Sets the border radius of the component.
   /// - Parameter value: The value of the border radius.
   /// - Returns: The component updated with the border radius.
-  public func borderRadius(_ value: Unit) -> Component {
+  public func borderRadius<V>(_ value: V) -> Component where V: MeasurementValue {
     rule(.borderRadius(value))
   }
 
@@ -14,11 +14,11 @@ extension Component {
   ///   - style: The style of the border.
   ///   - color: The color of the border.
   /// - Returns: The component updated with the border.
-  public func border(
-    width: Border.Width = .defaultValue,
-    style: Border.Style = .defaultValue,
+  public func border<V>(
+    width: V,
+    style: Border<V>.Style = .defaultValue,
     color: Color
-  ) -> Component {
+  ) -> Component where V: MeasurementValue {
     rule(.border(width: width, style: style, color: color))
   }
 
@@ -28,11 +28,11 @@ extension Component {
   ///   - style: The style of the border.
   ///   - color: The color of the border.
   /// - Returns: The component updated with the border.
-  public func borderTop(
-    width: Border.Width = .defaultValue,
-    style: Border.Style = .defaultValue,
+  public func borderTop<V>(
+    width: V,
+    style: Border<V>.Style = .defaultValue,
     color: Color
-  ) -> Component {
+  ) -> Component where V: MeasurementValue {
     rule(.borderTop(width: width, style: style, color: color))
   }
 
@@ -42,11 +42,11 @@ extension Component {
   ///   - style: The style of the border.
   ///   - color: The color of the border.
   /// - Returns: The component updated with the border.
-  public func borderLeft(
-    width: Border.Width = .defaultValue,
-    style: Border.Style = .defaultValue,
+  public func borderLeft<V>(
+    width: V,
+    style: Border<V>.Style = .defaultValue,
     color: Color
-  ) -> Component {
+  ) -> Component where V: MeasurementValue {
     rule(.borderLeft(width: width, style: style, color: color))
   }
 
@@ -56,11 +56,11 @@ extension Component {
   ///   - style: The style of the border.
   ///   - color: The color of the border.
   /// - Returns: The component updated with the border.
-  public func borderRight(
-    width: Border.Width = .defaultValue,
-    style: Border.Style = .defaultValue,
+  public func borderRight<V>(
+    width: V,
+    style: Border<V>.Style = .defaultValue,
     color: Color
-  ) -> Component {
+  ) -> Component where V: MeasurementValue {
     rule(.borderRight(width: width, style: style, color: color))
   }
 
@@ -70,11 +70,11 @@ extension Component {
   ///   - style: The style of the border.
   ///   - color: The color of the border.
   /// - Returns: The component updated with the border.
-  public func borderBottom(
-    width: Border.Width = .defaultValue,
-    style: Border.Style = .defaultValue,
+  public func borderBottom<V>(
+    width: V,
+    style: Border<V>.Style = .defaultValue,
     color: Color
-  ) -> Component {
+  ) -> Component where V: MeasurementValue {
     rule(.borderBottom(width: width, style: style, color: color))
   }
 }

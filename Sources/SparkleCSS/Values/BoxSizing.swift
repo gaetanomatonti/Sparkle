@@ -5,4 +5,8 @@ public enum BoxSizing: String, Value {
 
   /// The size of the element is calculated from the content, its padding and border.
   case borderBox = "border-box"
+
+  public var className: String {
+    render()
+  }
 }

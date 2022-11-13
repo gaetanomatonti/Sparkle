@@ -30,9 +30,28 @@ public struct Percentage {
 
 extension Percentage: Equatable {}
 
+extension Percentage: MeasurementValue {
+  public var className: String {
+    render()
+  }
+
+  public func render() -> String {
+    stringRepresentation
+  }
+}
+
+// MARK: - Operator
+
 postfix operator %
+
 extension Int {
   public postfix static func %(_ value: Int) -> Double {
     Double(value) / 100
+  }
+}
+
+extension Double {
+  public postfix static func %(_ value: Double) -> Double {
+    value / 100
   }
 }

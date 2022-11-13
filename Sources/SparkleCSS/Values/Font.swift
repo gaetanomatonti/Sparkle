@@ -43,6 +43,10 @@ public enum Font {
     /// A custom font family.
     case custom(_ name: String)
 
+    public var className: String {
+      render()
+    }
+
     public func render() -> String {
       switch self {
         case .monospace:
@@ -92,6 +96,10 @@ public enum Font {
     /// Ultra expanded font.
     case ultraExpanded = "ultra-expanded"
 
+    public var className: String {
+      render()
+    }
+
     public static var defaultValue: Font.Stretch {
       .normal
     }
@@ -108,6 +116,10 @@ public enum Font {
     /// Oblique font style.
     case oblique
 
+    public var className: String {
+      render()
+    }
+
     public static var defaultValue: Font.Style {
       .normal
     }
@@ -120,6 +132,10 @@ public enum Font {
 
     /// The small caps variant.
     case smallCaps = "small-caps"
+
+    public var className: String {
+      render()
+    }
 
     public static var defaultValue: Font.Variant {
       .normal
@@ -155,6 +171,10 @@ public enum Font {
     /// Black font weight.
     case black = 900
 
+    public var className: String {
+      render()
+    }
+
     public static var defaultValue: Font.Weight {
       .regular
     }
@@ -164,6 +184,10 @@ public enum Font {
   struct Families: Value {
     /// The wrapped list of families.
     let families: [Family]
+
+    var className: String {
+      render()
+    }
 
     init(_ families: [Family]) {
       self.families = families

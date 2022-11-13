@@ -34,6 +34,10 @@ extension Flex.Content {
     /// Stretches the lines to take up all the space of the container.
     case stretch
 
+    public var className: String {
+      render()
+    }
+
     /// The default value of the content alignment.
     public static var defaultValue: Alignment {
       .normal
@@ -63,6 +67,10 @@ extension Flex.Content {
     /// Items are distributed so that the spacing between and around the items is equal.
     case spaceEvenly = "space-evenly"
 
+    public var className: String {
+      render()
+    }
+
     /// The default value of the content justification.
     public static var defaultValue: Justification {
       .flexStart
@@ -84,6 +92,10 @@ extension Flex {
 
     /// Stacks items horizontally but in reverse order (from left to right).
     case reversedRow = "row-reverse"
+
+    public var className: String {
+      render()
+    }
 
     /// The default value of the flex direction.
     public static var defaultValue: Flex.Direction {
@@ -114,6 +126,10 @@ extension Flex.Item {
 
     /// Items are aligned so that their baselines align.
     case baseline
+
+    public var className: String {
+      render()
+    }
 
     /// The default value of the item alignment.
     public static var defaultValue: Alignment {

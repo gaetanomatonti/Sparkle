@@ -17,6 +17,25 @@ final class RuleTests: XCTestCase {
     XCTAssertEqual(renderer.render(sut), expectedResult)
   }
 
+  func testSelectorRendering() {
+    XCTAssertEqual(
+      renderer.render(Rule.margin(.rem(1.25))),
+      ".margin-1\\.25rem { margin: 1.25rem; }"
+    )
+    XCTAssertEqual(
+      renderer.render(Rule(.identifier("test"), declarations: .margin(.zero))),
+      "#test { margin: 0; }"
+    )
+    XCTAssertEqual(
+      renderer.render(Rule(.element("h1"), declarations: .margin(.zero))),
+      "h1 { margin: 0; }"
+    )
+    XCTAssertEqual(
+      renderer.render(Rule(.universal, declarations: .margin(.zero))),
+      "* { margin: 0; }"
+    )
+  }
+
   func testSelectorSorting() {
     let sut: [Rule.Selector] = [
       .identifier("container"),

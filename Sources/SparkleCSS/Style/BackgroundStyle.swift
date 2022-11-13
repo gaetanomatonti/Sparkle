@@ -1,8 +1,5 @@
 /// A protocol that describes requirements for a style that can be applied to the background of an element.
-public protocol BackgroundStyle: Value {
-  /// The name of the class.
-  var className: String { get }
-}
+public protocol BackgroundStyle: Value {}
 
 #if canImport(RegexBuilder)
 @available(macOS 13.0, *)
