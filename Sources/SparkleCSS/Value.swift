@@ -24,6 +24,9 @@ extension Value where Self: RawRepresentable, RawValue == Int {
 }
 
 public extension Value {
+  /// Adds an identifier to the value which will be used to identify it in the stylesheet.
+  /// - Parameter name: The name to use as an identifier for the value.
+  /// - Returns: A `IdentifiedValue` that wraps and identifies the value.
   func identifier(_ name: String) -> IdentifiedValue<Self> {
     IdentifiedValue(name: name, value: self)
   }

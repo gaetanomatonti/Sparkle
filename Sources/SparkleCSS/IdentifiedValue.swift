@@ -10,6 +10,10 @@ public struct IdentifiedValue<V> where V: Value {
 }
 
 extension IdentifiedValue: Value {
+  public var className: String {
+    name
+  }
+
   public func render() -> String {
     value.render()
   }
@@ -17,10 +21,12 @@ extension IdentifiedValue: Value {
 
 extension IdentifiedValue: Equatable where V: Equatable {}
 
-extension IdentifiedValue: MeasurementValue where V: MeasurementValue {}
+extension IdentifiedValue: BackgroundImage where V: BackgroundImage {}
 
-extension IdentifiedValue: BackgroundImage, BackgroundStyle, Color, ForegroundStyle {
-  public var className: String {
-    name
-  }
-}
+extension IdentifiedValue: BackgroundStyle where V: BackgroundStyle {}
+
+extension IdentifiedValue: Color where V: Color {}
+
+extension IdentifiedValue: ForegroundStyle where V: ForegroundStyle {}
+
+extension IdentifiedValue: MeasurementValue where V: MeasurementValue {}

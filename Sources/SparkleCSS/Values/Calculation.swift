@@ -2,12 +2,16 @@
 public struct Calculation<LHS, RHS> where LHS: MeasurementValue, RHS: MeasurementValue {
   /// The enumeration of the supported operations.
   enum Operation: String {
+    /// The sum operation.
     case sum = "+"
 
+    /// The subtraction operation.
     case subtraction = "-"
 
+    /// The multiplication operation.
     case multiplication = "*"
 
+    /// The division operation.
     case division = "/"
   }
 
@@ -25,7 +29,7 @@ extension Calculation: MeasurementValue {
   public var className: String {
     render()
   }
-  
+
   public func render() -> String {
     "calc(\(lhs.render()) \(operation.rawValue) \(rhs.render()))"
   }

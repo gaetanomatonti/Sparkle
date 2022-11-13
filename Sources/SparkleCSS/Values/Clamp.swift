@@ -14,6 +14,11 @@ public struct Clamp<Minimum, Value, Maximum> where Minimum: MeasurementValue, Va
 
   // MARK: - Init
 
+  /// Creates an instance of the `clamp` function.
+  /// - Parameters:
+  ///   - minimum: The minimum allowed value.
+  ///   - value: The preferred value that will be used as long as it is between the minimum and maximum values.
+  ///   - maximum: The maximum allowed value.
   public init(_ minimum: Minimum, _ value: Value, _ maximum: Maximum) {
     self.minimum = minimum
     self.value = value
