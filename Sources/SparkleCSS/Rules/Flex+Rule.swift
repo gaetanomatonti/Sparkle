@@ -4,7 +4,7 @@ extension Rule {
   /// - Returns: The rule that sets the justification of the content.
   public static func justifyContent(_ justification: Flex.Content.Justification) -> Rule {
     Rule(
-      .class("justify-\(justification.rawValue)"),
+      .class("justify-\(justification.className)"),
       declarations: .justifyContent(justification)
     )
   }
@@ -14,7 +14,7 @@ extension Rule {
   /// - Returns: The rule that sets the alignment of the content.
   public static func alignContent(_ alignment: Flex.Content.Alignment) -> Rule {
     Rule(
-      .class("content-\(alignment.rawValue)"),
+      .class("content-\(alignment.className)"),
       declarations: .alignContent(alignment)
     )
   }
@@ -24,7 +24,7 @@ extension Rule {
   /// - Returns: The rule that sets the alignment of the items.
   public static func alignItems(_ alignment: Flex.Item.Alignment) -> Rule {
     Rule(
-      .class("items-\(alignment.rawValue)"),
+      .class("items-\(alignment.className)"),
       declarations: .alignItems(alignment)
     )
   }

@@ -4,7 +4,7 @@ extension Component {
   /// Applies a margin to the component.
   /// - Parameter value: The value of the margin.
   /// - Returns: The component updated with the newly generated margin class.
-  public func margin(_ value: Unit) -> Component {
+  public func margin<V>(_ value: V) -> Component where V: MeasurementValue {
     rule(.margin(value))
   }
 
@@ -13,7 +13,7 @@ extension Component {
   ///   - edge: The edge on which to apply the margin.
   ///   - value: The value of the margin.
   /// - Returns: The component updated with the newly generated margin class.
-  public func margin(_ edge: Edge, _ value: Unit) -> Component {
+  public func margin<V>(_ edge: Edge.Set = .all, _ value: V) -> Component where V: MeasurementValue {
     rule(.margin(edge, value))
   }
 }

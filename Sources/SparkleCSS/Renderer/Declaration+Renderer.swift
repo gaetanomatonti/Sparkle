@@ -26,7 +26,7 @@ extension StyleSheetRenderer {
       declarations.map { declaration in
         render(declaration)
       }
-      .joined(separator: "\n")
+      .joined(separator: indentation.allowsNewlines ? "\n" : "")
     }
 
     /// Renders a declaration into a `String`.

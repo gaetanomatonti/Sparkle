@@ -1,12 +1,12 @@
 import SparkleCSS
 
 /// A container that stacks its content horizontally.
-public struct HStack: Component {
+public struct HStack<Spacing>: Component where Spacing: MeasurementValue {
 
   // MARK: - Stored Properties
 
   /// The spacing applied between the contents.
-  let spacing: Unit
+  let spacing: Spacing
 
   /// The justification of the content.
   let contentJustification: Flex.Content.Justification
@@ -30,7 +30,7 @@ public struct HStack: Component {
   ///   - alignItems: The alignment of the items.
   ///   - content: The content of the component.
   public init(
-    spacing: Unit = .pixel(.zero),
+    spacing: Spacing = Pixel(.zero),
     justifyContent: Flex.Content.Justification = .defaultValue,
     alignContent: Flex.Content.Alignment = .defaultValue,
     alignItems: Flex.Item.Alignment = .defaultValue,

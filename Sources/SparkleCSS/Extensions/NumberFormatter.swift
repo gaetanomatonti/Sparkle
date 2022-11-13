@@ -12,7 +12,7 @@ extension NumberFormatter {
     formatter.allowsFloats = true
     formatter.minimumFractionDigits = 0
     formatter.maximumFractionDigits = 3
-    formatter.decimalSeparator = "\\."
+    formatter.decimalSeparator = "."
     return formatter
   }
 }
