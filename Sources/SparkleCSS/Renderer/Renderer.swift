@@ -57,6 +57,12 @@ public final class StyleSheetRenderer {
     rules.insert(rule)
   }
 
+  /// Inserts a lit of rules in the set of rules to render.
+  /// - Parameter rules: The list of rules to add to the set of rules.
+  public func insert(_ rules: [Rule]) {
+    self.rules.formUnion(rules)
+  }
+
   /// Renders the rules in `String` format, sorted alphabetically.
   public func render() -> String {
     let imports = imports
