@@ -10,19 +10,19 @@ final class BorderTests: XCTestCase {
   }
 
   func testBorderRendering() {
-    let sut = Border(width: .medium, style: .solid, color: NamedColor.red)
+    let sut = Border(width: .pixel(1), style: .solid, color: NamedColor.red)
 
-    XCTAssertEqual(sut.render(), "medium solid red")
+    XCTAssertEqual(sut.render(), "1px solid red")
   }
 
   func testBorderRule() {
-    let sut = Rule.border(width: .medium, style: .solid, color: NamedColor.red)
+    let sut = Rule.border(width: .pixel(1), style: .solid, color: NamedColor.red)
 
     XCTAssertEqual(
       renderer.render(sut),
       """
-      .border-medium-solid-red {
-        border: medium solid red;
+      .border-1px-solid-red {
+        border: 1px solid red;
       }
       """
     )

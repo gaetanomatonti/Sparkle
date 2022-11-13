@@ -2,7 +2,7 @@ extension Rule {
   /// Creates a rule that sets the font size.
   /// - Parameter value: The size of the font.
   /// - Returns: The rule that sets the font size.
-  public static func fontSize(_ size: Unit) -> Rule {
+  public static func fontSize<V>(_ size: V) -> Rule where V: MeasurementValue {
     Rule(.class("text-size-\(size.render())"), declarations: .fontSize(size))
   }
 
@@ -30,7 +30,7 @@ extension Rule {
   /// Creates a rule that sets the line height.
   /// - Parameter value: The value of the line height.
   /// - Returns: The rule that sets the line height.
-  public static func lineHeight(_ value: Unit) -> Rule {
+  public static func lineHeight<V>(_ value: V) -> Rule where V: MeasurementValue {
     Rule(.class("line-height-\(value.render())"), declarations: .lineHeight(value))
   }
 }

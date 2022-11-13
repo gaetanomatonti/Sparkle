@@ -41,7 +41,7 @@ extension Rule {
   /// Creates the rule that sets the thickness of the line decoration of the text.
   /// - Parameter value: The thickness of the line decoration of the text.
   /// - Returns: The rule that sets the thickness of the line decoration of the text.
-  public static func textDecorationThickness(_ value: Unit) -> Rule {
+  public static func textDecorationThickness<V>(_ value: V) -> Rule where V: MeasurementValue {
     Rule(
       .class("decoration-\(value)"),
       declarations: .textDecorationThickness(value)
@@ -61,7 +61,7 @@ extension Rule {
   /// Creates the rule that sets the offset of the text underline.
   /// - Parameter value: The offset of the text underline.
   /// - Returns: The rule that sets the offset of the text underline.
-  public static func textUnderlineOffset(_ value: Unit) -> Rule {
+  public static func textUnderlineOffset<V>(_ value: V) -> Rule where V: MeasurementValue {
     Rule(
       .class("underline-offset-\(value.render())"),
       declarations: .textUnderlineOffset(value)

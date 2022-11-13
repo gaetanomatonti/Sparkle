@@ -20,3 +20,9 @@ extension Value where Self: RawRepresentable, RawValue == Int {
     rawValue.description
   }
 }
+
+public extension Value {
+  func identifier(_ name: String) -> IdentifiedValue<Self> {
+    IdentifiedValue(name: name, value: self)
+  }
+}

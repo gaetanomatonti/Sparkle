@@ -2,7 +2,7 @@ extension Rule {
   /// Creates a rule that sets the padding on all edges of a component.
   /// - Parameter value: The value of the padding to apply.
   /// - Returns: The rule for a class that sets the padding.
-  public static func padding(_ value: Unit) -> Rule {
+  public static func padding<V>(_ value: V) -> Rule where V: MeasurementValue {
     padding(.all, value)
   }
 
@@ -11,7 +11,7 @@ extension Rule {
   ///   - edge: The edge where the padding should be applied.
   ///   - value: The value of the padding to apply.
   /// - Returns: The rule for a class that sets the padding.
-  public static func padding(_ edge: Edge.Set, _ value: Unit) -> Rule {
+  public static func padding<V>(_ edge: Edge.Set, _ value: V) -> Rule where V: MeasurementValue {
     let declarations: [Declaration] = edge.edges.map { edge in
         .padding(edge, value)
     }
