@@ -4,7 +4,7 @@ extension Rule {
   /// - Returns: The rule for a class that sets the gap.
   public static func gap<V>(_ value: V) -> Rule where V: MeasurementValue {
     Rule(
-      .class("gap-\(value.render())"),
+      .class("gap-\(value.className)"),
       declarations: .gap(value)
     )
   }

@@ -1,7 +1,9 @@
 import SparkleTools
 
 /// A protocol that defines requirements for a CSS value.
-public protocol Value: Renderable {}
+public protocol Value: Renderable {
+  var className: String { get }
+}
 
 /// A protocol that defines requirements for a value that provides a default value.
 public protocol ValueWithDefaultValue: Value, Equatable {

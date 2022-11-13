@@ -1,18 +1,19 @@
 import XCTest
 @testable import SparkleCSS
 
-final class UnitTests: XCTestCase {
-  func testPixelStringRepresentation() {
+final class MeasurementValueTests: XCTestCase {
+  func testPixel() {
     XCTAssertEqual(Pixel(16).render(), "16px")
   }
 
-  func testEmStringRepresentation() {
+  func testEm() {
     XCTAssertEqual(EM(0.5).render(), "0.5em")
     XCTAssertEqual(EM(0.75).render(), "0.75em")
     XCTAssertEqual(EM(1.0).render(), "1em")
   }
 
-  func testRemStringRepresentation() {
+  func testRem() {
+    XCTAssertEqual(REM(1).render(), "1rem")
     XCTAssertEqual(REM(1.25).render(), "1.25rem")
   }
 
@@ -30,5 +31,12 @@ final class UnitTests: XCTestCase {
     XCTAssertNotEqual(REM(1), REM(2))
     XCTAssertNotEqual(Viewport.Height(2), Viewport.Height(20))
     XCTAssertNotEqual(Viewport.Width(2), Viewport.Width(20))
+  }
+
+  func testIdentifiedMeasurementValue() {
+    let sut = REM(1.25).identifier("spacing-small")
+    let rule = Rule.margin(.horizontal, sut)
+
+    XCTAssertEqual(rule.selector, .class("margin-horizontal-spacing-small"))
   }
 }

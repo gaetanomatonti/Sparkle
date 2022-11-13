@@ -22,6 +22,10 @@ public struct Calculation<LHS, RHS> where LHS: MeasurementValue, RHS: Measuremen
 }
 
 extension Calculation: MeasurementValue {
+  public var className: String {
+    render()
+  }
+  
   public func render() -> String {
     "calc(\(lhs.render()) \(operation.rawValue) \(rhs.render()))"
   }

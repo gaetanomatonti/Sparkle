@@ -4,7 +4,7 @@ extension Rule {
   /// - Returns: The rule that sets the alignment of the text.
   public static func textAlignment(_ alignment: Text.Alignment) -> Rule {
     Rule(
-      .class("text-\(alignment.render())"),
+      .class("text-\(alignment.className)"),
       declarations: .textAlignment(alignment)
     )
   }
@@ -23,7 +23,7 @@ extension Rule {
   /// - Returns: The rule that sets the line decoration of the text.
   public static func textDecoration(_ decoration: Text.Decoration) -> Rule {
     Rule(
-      .class("decoration-\(decoration.render())"),
+      .class("decoration-\(decoration.className)"),
       declarations: .textDecoration(decoration)
     )
   }
@@ -33,7 +33,7 @@ extension Rule {
   /// - Returns: The rule that sets the style of the line decoration of the text.
   public static func textDecorationStyle(_ style: Text.Decoration.Style) -> Rule {
     Rule(
-      .class("decoration-style-\(style.render())"),
+      .class("decoration-style-\(style.className)"),
       declarations: .textDecorationStyle(style)
     )
   }
@@ -63,7 +63,7 @@ extension Rule {
   /// - Returns: The rule that sets the offset of the text underline.
   public static func textUnderlineOffset<V>(_ value: V) -> Rule where V: MeasurementValue {
     Rule(
-      .class("underline-offset-\(value.render())"),
+      .class("underline-offset-\(value.className)"),
       declarations: .textUnderlineOffset(value)
     )
   }

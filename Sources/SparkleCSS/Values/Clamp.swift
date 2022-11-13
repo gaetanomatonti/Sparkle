@@ -22,6 +22,10 @@ public struct Clamp<Minimum, Value, Maximum> where Minimum: MeasurementValue, Va
 }
 
 extension Clamp: MeasurementValue {
+  public var className: String {
+    render()
+  }
+  
   public func render() -> String {
     "clamp(\(minimum.render()), \(value.render()), \(maximum.render()))"
   }

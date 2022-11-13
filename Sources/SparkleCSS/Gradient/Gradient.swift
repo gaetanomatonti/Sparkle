@@ -59,7 +59,7 @@ extension Gradient {
 
     // MARK: - Computed Properties
 
-    var className: String {
+    public var className: String {
       color.className + "-" + _location.stringRepresentation
     }
 

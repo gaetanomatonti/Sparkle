@@ -8,6 +8,10 @@ public enum Source: Hashable, Value {
   /// Import a resource using a `URL`.
   case url(_ value: String)
 
+  public var className: String {
+    "source-\(hashValue)"
+  }
+
   public func render() -> String {
     switch self {
       case let .string(value):

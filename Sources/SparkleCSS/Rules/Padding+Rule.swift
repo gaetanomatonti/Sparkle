@@ -19,19 +19,19 @@ extension Rule {
     switch edge {
       case .all:
         return Rule(
-          .class("padding-\(value.render())"),
+          .class("padding-\(value.className)"),
           declarations: .padding(value)
         )
 
       case .horizontal, .vertical, .top, .left, .right, .bottom:
         return Rule(
-          .class("padding-\(edge.name)-\(value.render())"),
+          .class("padding-\(edge.name)-\(value.className)"),
           declarations: declarations
         )
 
       default:
         return Rule(
-          .class("padding-\(edge.name)-\(value.render())"),
+          .class("padding-\(edge.name)-\(value.className)"),
           declarations: declarations
         )
     }

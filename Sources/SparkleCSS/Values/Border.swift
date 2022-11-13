@@ -15,7 +15,7 @@ public struct Border<Width>: Value where Width: MeasurementValue {
   // MARK: - Computed Properties
 
   /// The name of the class that applies the border.
-  var className: String {
+  public var className: String {
     "\(width.render())-\(style.render())-\(color.className)"
   }
 
@@ -74,6 +74,10 @@ extension Border {
 
     /// An outset border.
     case outset
+
+    public var className: String {
+      render()
+    }
 
     public static var defaultValue: Style {
       .none

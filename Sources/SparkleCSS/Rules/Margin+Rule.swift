@@ -19,19 +19,19 @@ extension Rule {
     switch edge {
       case .all:
         return Rule(
-          .class("margin-\(value.render())"),
+          .class("margin-\(value.className)"),
           declarations: .margin(value)
         )
 
       case .horizontal, .vertical, .top, .left, .right, .bottom:
         return Rule(
-          .class("margin-\(edge.name)-\(value.render())"),
+          .class("margin-\(edge.name)-\(value.className)"),
           declarations: declarations
         )
 
       default:
         return Rule(
-          .class("margin-\(edge.name)-\(value.render())"),
+          .class("margin-\(edge.name)-\(value.className)"),
           declarations: declarations
         )
     }

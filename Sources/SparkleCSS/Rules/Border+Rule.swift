@@ -4,7 +4,7 @@ extension Rule {
   /// - Returns: A `Rule` that sets the border radius.
   public static func borderRadius<V>(_ value: V) -> Rule where V: MeasurementValue {
     Rule(
-      .class("border-radius-\(value.render())"),
+      .class("border-radius-\(value.className)"),
       declarations: .borderRadius(value)
     )
   }

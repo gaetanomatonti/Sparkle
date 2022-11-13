@@ -4,7 +4,7 @@ extension Rule {
   /// - Returns: The rule for a class that sets the minimum width.
   public static func minimumWidth<V>(_ value: V) -> Rule where V: MeasurementValue {
     Rule(
-      .class("min-width-\(value.render())"),
+      .class("min-width-\(value.className)"),
       declarations: .minimumWidth(value)
     )
   }
@@ -14,7 +14,7 @@ extension Rule {
   /// - Returns: The rule for a class that sets the width.
   public static func width<V>(_ value: V) -> Rule where V: MeasurementValue {
     Rule(
-      .class("width-\(value.render())"),
+      .class("width-\(value.className)"),
       declarations: .width(value)
     )
   }
@@ -24,7 +24,7 @@ extension Rule {
   /// - Returns: The rule for a class that sets the maximum width.
   public static func maximumWidth<V>(_ value: V) -> Rule where V: MeasurementValue {
     Rule(
-      .class("max-width-\(value.render())"),
+      .class("max-width-\(value.className)"),
       declarations: .maximumWidth(value)
     )
   }
@@ -34,7 +34,7 @@ extension Rule {
   /// - Returns: The rule for a class that sets the minimum height.
   public static func minimumHeight<V>(_ value: V) -> Rule where V: MeasurementValue {
     Rule(
-      .class("min-height-\(value.render())"),
+      .class("min-height-\(value.className)"),
       declarations: .minimumHeight(value)
     )
   }
@@ -44,7 +44,7 @@ extension Rule {
   /// - Returns: The rule for a class that sets the height.
   public static func height<V>(_ value: V) -> Rule where V: MeasurementValue {
     Rule(
-      .class("height-\(value.render())"),
+      .class("height-\(value.className)"),
       declarations: .width(value)
     )
   }
@@ -54,7 +54,7 @@ extension Rule {
   /// - Returns: The rule for a class that sets the maximum height.
   public static func maximumHeight<V>(_ value: V) -> Rule where V: MeasurementValue {
     Rule(
-      .class("max-height-\(value.render())"),
+      .class("max-height-\(value.className)"),
       declarations: .maximumHeight(value)
     )
   }

@@ -11,4 +11,8 @@ public enum BackgroundClip: String, Value {
 
   /// Clips the background to the text.
   case text
+
+  public var className: String {
+    render()
+  }
 }

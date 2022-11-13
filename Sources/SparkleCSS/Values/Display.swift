@@ -11,4 +11,8 @@ public enum Display: String, Value {
 
   /// Displays the element as a grid container.
   case grid
+
+  public var className: String {
+    render()
+  }
 }
