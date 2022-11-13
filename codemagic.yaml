@@ -14,6 +14,9 @@ workflows:
         - pattern: develop
           include: true
           source: false
+        - pattern: main
+          include: true
+          source: false
       cancel_previous_builds: true
     scripts:
       - name: Test
