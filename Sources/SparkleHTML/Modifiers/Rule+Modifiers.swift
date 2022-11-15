@@ -6,7 +6,9 @@ extension Component {
   /// - Parameter rule: The rule to apply to the component.
   /// - Returns: The updated comopnent.
   public func rule(_ rule: Rule) -> Component {
-    EnvironmentValues.styleSheetRenderer.insert(rule)
+    Task {
+      await EnvironmentValues.rulesContainer.insert(rule)
+    }
 
     switch rule.selector {
       case let .class(name):
