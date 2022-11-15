@@ -2,7 +2,7 @@ import Foundation
 import SparkleTools
 
 /// An object that renders a set of CSS rules into a file.
-public final class StyleSheetRenderer {
+public struct StyleSheetRenderer {
 
   // MARK: - Stored Properties
 
@@ -10,13 +10,13 @@ public final class StyleSheetRenderer {
   let indentation: Indentation
 
   /// The set of `@import` statements.
-  var imports: Set<Source>
+  let imports: Set<Source>
 
   /// The font faces to apply to the stylesheet.
-  var fontFaces: Set<Font.Face>
+  let fontFaces: Set<Font.Face>
 
   /// The set of rules that should be rendered.
-  var rules: Set<Rule>
+  let rules: Set<Rule>
 
   // MARK: - Init
 
@@ -38,30 +38,6 @@ public final class StyleSheetRenderer {
   }
 
   // MARK: - Functions
-
-  /// Inserts an import statement in the set of imports.
-  /// - Parameter source: The import statement to add to the set of imports.
-  public func `import`(_ source: Source) {
-    imports.insert(source)
-  }
-
-  /// Inserts a font face in the stylesheet.
-  /// - Parameter rule: The font face to add to the stylesheet.
-  public func insert(_ fontFace: Font.Face) {
-    fontFaces.insert(fontFace)
-  }
-
-  /// Inserts a rule in the set of rules to render.
-  /// - Parameter rule: The rule to add to the set of rules.
-  public func insert(_ rule: Rule) {
-    rules.insert(rule)
-  }
-
-  /// Inserts a lit of rules in the set of rules to render.
-  /// - Parameter rules: The list of rules to add to the set of rules.
-  public func insert(_ rules: [Rule]) {
-    self.rules.formUnion(rules)
-  }
 
   /// Renders the rules in `String` format, sorted alphabetically.
   public func render() -> String {
@@ -99,24 +75,5 @@ public final class StyleSheetRenderer {
       !$0.isEmpty
     }
     .joined(separator: indentation.allowsNewlines ? "\n" : "")
-  }
-}
-
-// MARK: - Environment
-
-/// The key to access the `Renderer` instance in the environment.
-struct RendererKey: EnvironmentKey {
-  static var defaultValue = StyleSheetRenderer()
-}
-
-extension EnvironmentValues {
-  /// The instance of the `Renderer` in the environment.
-  public static var styleSheetRenderer: StyleSheetRenderer {
-    get {
-      self[RendererKey.self]
-    }
-    set {
-      self[RendererKey.self] = newValue
-    }
   }
 }

@@ -4,22 +4,24 @@ import SparkleTools
 
 final class StylesheetRendererTests: XCTestCase {
 
-  var renderer: StyleSheetRenderer!
+  var container: RulesContainer!
 
   override func setUp() {
-    renderer = StyleSheetRenderer(indentation: Indentation(kind: .spaces(2), allowsNewlines: true))
+    container = RulesContainer()
   }
 
-  func testInsertMultipleRules() {
-    renderer.insert(.textAlignment(.center))
+  func testInsertMultipleRules() async {
+    await container.insert(.textAlignment(.center))
 
-    renderer.insert([
+    await container.insert([
       .textAlignment(.center),
       .margin(.horizontal, .auto)
     ])
 
-    XCTAssertEqual(renderer.rules.count, 2)
-    XCTAssertTrue(renderer.rules.contains(.textAlignment(.center)))
-    XCTAssertTrue(renderer.rules.contains(.margin(.horizontal, .auto)))
+    let rules = await container.rules
+
+    XCTAssertEqual(rules.count, 2)
+    XCTAssertTrue(rules.contains(.textAlignment(.center)))
+    XCTAssertTrue(rules.contains(.margin(.horizontal, .auto)))
   }
 }
