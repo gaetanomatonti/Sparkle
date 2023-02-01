@@ -45,7 +45,7 @@ extension Rule {
   public static func height<V>(_ value: V) -> Rule where V: MeasurementValue {
     Rule(
       .class("height-\(value.className)"),
-      declarations: .width(value)
+      declarations: .height(value)
     )
   }
 
