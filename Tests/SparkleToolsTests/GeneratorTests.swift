@@ -1,6 +1,5 @@
 import XCTest
-import SparkleHTML
-@testable import Sparkle
+@testable import SparkleTools
 
 final class GeneratorTests: XCTestCase {
 
@@ -15,9 +14,7 @@ final class GeneratorTests: XCTestCase {
   }
 
   func testRenderFile() throws {
-    let page = ExamplePage()
-    let renderer = HTMLRenderer()
-    let generator = Generator(content: renderer.render(page))
+    let generator = Generator(content: "Hello World")
     try generator.write(file: "index", with: "html", to: testDirectory)
     XCTAssertTrue(FileManager.default.fileExists(atPath: testDirectory.path))
   }

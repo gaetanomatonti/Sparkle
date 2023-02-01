@@ -1,8 +1,6 @@
 /// A protocol that defines requirements for types representing a color.
 public protocol Color: Value, ForegroundStyle, BackgroundStyle {}
 
-#if canImport(RegexBuilder)
-@available(macOS 13.0, *)
 extension Color where Self == Hex {
   /// Creates the the color from its hexadecimal value.
   /// - Parameter value: The hexadecimal value of the color.
@@ -11,7 +9,6 @@ extension Color where Self == Hex {
     value
   }
 }
-#endif
 
 extension Color where Self == HSL {
   /// Creates a color with HSL components.
