@@ -18,21 +18,19 @@ public protocol Site {
   var additionalPages: [Page] { get }
 }
 
-public extension Site {
-  var baseURL: URL {
+extension Site {
+  public var baseURL: URL {
     URL(string: "https://example.org")!
   }
 
-  var locale: Locale {
+  public var locale: Locale {
     Locale(identifier: "en_US")
   }
 
-  var additionalPages: [Page] {
+  public var additionalPages: [Page] {
     []
   }
-}
 
-extension Site {
   /// The `URL` of the directory where all generated files should be saved.
   private var outputPath: URL {
     let filePath = URL(fileURLWithPath: #file.description)
@@ -63,6 +61,7 @@ extension Site {
     let renderer = HTMLRenderer()
     let htmlGenerator = Generator(content: renderer.render(homepage))
     try htmlGenerator.write(file: "index", with: "html", to: outputPath)
+    let htmlGenerator = FileGenerator(content: renderedContent)
   }
 
   /// Generates the CSS files of the site at the default `Output` directory of the package.
@@ -71,5 +70,6 @@ extension Site {
     let renderer = StyleSheetRenderer()
     let cssGenerator = Generator(content: renderer.render())
     try cssGenerator.write(file: "styles", with: "css", to: outputPath)
+    let cssGenerator = FileGenerator(content: renderedContent)
   }
 }

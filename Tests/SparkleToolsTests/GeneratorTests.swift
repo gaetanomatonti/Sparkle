@@ -14,7 +14,7 @@ final class GeneratorTests: XCTestCase {
   }
 
   func testRenderFile() throws {
-    let generator = Generator(content: "Hello World")
+    let generator = FileGenerator(content: "Hello World")
     try generator.write(file: "index", with: "html", to: testDirectory)
     XCTAssertTrue(FileManager.default.fileExists(atPath: testDirectory.path))
   }
