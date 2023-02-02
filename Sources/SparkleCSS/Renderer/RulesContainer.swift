@@ -14,6 +14,8 @@ public actor RulesContainer {
   /// The set of rules that should be rendered.
   var rules: Set<Rule> = []
 
+  // MARK: - Init
+
   init(imports: Set<Source> = [], fontFaces: Set<Font.Face> = [], rules: Set<Rule> = []) {
     self.imports = imports
     self.fontFaces = fontFaces
@@ -50,6 +52,8 @@ public actor RulesContainer {
 public struct RulesContainerKey: EnvironmentKey {
   public static var defaultValue = RulesContainer()
 }
+
+// MARK: - EnvironmentValues
 
 extension EnvironmentValues {
   /// The instance of the `Renderer` in the environment.

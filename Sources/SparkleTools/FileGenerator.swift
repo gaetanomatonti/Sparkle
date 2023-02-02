@@ -1,7 +1,7 @@
 import Foundation
 
 /// An object that generates a file from the given `String` content.
-public struct Generator {
+public struct FileGenerator {
 
   // MARK: - Stored Properties
 
@@ -32,6 +32,10 @@ public struct Generator {
 
     let newPath = path.appendingPathComponent(name).appendingPathExtension(pathExtension)
 
+    guard !content.isEmpty else {
+      throw Error.emptyContent
+    }
+
     guard let data = content.data(using: .utf8) else {
       throw Error.invalidData
     }
@@ -42,13 +46,29 @@ public struct Generator {
   }
 }
 
-extension Generator {
+extension FileGenerator {
   /// The possible errors that can occur when generating a file.
-  enum Error: Swift.Error {
+  enum Error: Swift.Error, LocalizedError {
     /// The `URL` does not link to a directory.
     case invalidFileURL
 
-    /// The data to write is invalid.
+    /// The data to write is not valid.
     case invalidData
+
+    /// The content is empty, so the file will not be written.
+    case emptyContent
+
+    var errorDescription: String? {
+      switch self {
+        case .invalidFileURL:
+          return "The URL does not link to a directory."
+
+        case .invalidData:
+          return "The data to write is not valid."
+
+        case .emptyContent:
+          return "The content is empty, so the file will not be written."
+      }
+    }
   }
 }
