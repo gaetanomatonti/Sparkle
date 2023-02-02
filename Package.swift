@@ -32,6 +32,10 @@ let package = Package(
       dependencies: ["SparkleCSS", "SparkleHTML", "SparkleTools"]
     ),
     .testTarget(
+      name: "SparkleTests",
+      dependencies: ["Sparkle"]
+    ),
+    .testTarget(
       name: "SparkleCSSTests",
       dependencies: ["SparkleCSS"]
     ),

@@ -44,32 +44,34 @@ extension Site {
   ///
   /// Use this method to add pre-existent or custom rules to be rendered into your stylesheet.
   /// - Parameter configure: A closure that allows to configure the `RulesContainer` instance in the environment.
-  public func configureStyleSheet(_ configure: (RulesContainer) -> Void) {
-    configure(EnvironmentValues.rulesContainer)
+  public func configureStyleSheet(_ configure: @escaping (RulesContainer) async -> Void) {
+    Task {
+      await configure(EnvironmentValues.rulesContainer)
+    }
   }
 
   /// Generates the site at the default `Output` directory of the package.
   /// - Parameter indentation: The indentation to use when rendering code in the HTML and CSS files.
-  public func generate(with indentation: Indentation = Indentation(), _ file: StaticString = #file) throws {
-    try generateHTML(with: indentation)
-    try generateCSS(with: indentation)
+  public func generate(with indentation: Indentation = Indentation(), _ file: StaticString = #file) async throws {
+    try generateHTML(with: indentation, to: outputPath)
+    try await generateCSS(with: indentation, to: outputPath)
   }
 
   /// Generates the HTML files of the site at the default `Output` directory of the package.
   /// - Parameter indentation: The indentation to use when rendering code in the HTML file.
-  private func generateHTML(with indentation: Indentation) throws {
+  func generateHTML(with indentation: Indentation, to path: URL) throws {
     let renderer = HTMLRenderer()
-    let htmlGenerator = Generator(content: renderer.render(homepage))
-    try htmlGenerator.write(file: "index", with: "html", to: outputPath)
+    let renderedContent = renderer.render(homepage)
     let htmlGenerator = FileGenerator(content: renderedContent)
+    try htmlGenerator.write(file: "index", with: "html", to: path)
   }
 
   /// Generates the CSS files of the site at the default `Output` directory of the package.
   /// - Parameter indentation: The indentation to use when rendering code CSS file.
-  private func generateCSS(with indentation: Indentation) throws {
-    let renderer = StyleSheetRenderer()
-    let cssGenerator = Generator(content: renderer.render())
-    try cssGenerator.write(file: "styles", with: "css", to: outputPath)
+  func generateCSS(with indentation: Indentation, to path: URL) async throws {
+    let renderer = StyleSheetRenderer(indentation: indentation)
+    let renderedContent = await renderer.render()
     let cssGenerator = FileGenerator(content: renderedContent)
+    try cssGenerator.write(file: "styles", with: "css", to: path)
   }
 }
